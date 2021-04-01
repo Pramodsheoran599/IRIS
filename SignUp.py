@@ -1,7 +1,6 @@
 from PyQt5 import QtWidgets, uic, QtGui
 from PyQt5.QtWidgets import QMessageBox
-# from Database import insert_user
-from Firebase_Operations import push_user
+from Firebase_Operations import push_user_to_database
 
 
 class Register_Window(QtWidgets.QMainWindow):
@@ -32,6 +31,7 @@ class Register_Window(QtWidgets.QMainWindow):
         self.exit_btn.clicked.connect(self.exit)
 
     def validation(self):
+
         new_user = {
             "Username": self.username.text(),
             "Password" : self.password.text(),
@@ -45,8 +45,13 @@ class Register_Window(QtWidgets.QMainWindow):
             self.message_box("Please Fill All the Details")
 
         elif self.password.text() == self.con_password.text():
-            push_user(new_user)
-            self.message_box("You Have Successfully Registered with the IRIS System.")
+            if push_user_to_database(new_user):
+
+                self.message_box("You Have Successfully Registered with the IRIS System.")
+                print("success")
+            else:
+
+                self.message_box("You are Already Registered with the IRIS System.")
 
         else:
             self.message_box("Passwords Do not Match.")
@@ -57,8 +62,7 @@ class Register_Window(QtWidgets.QMainWindow):
         msgBox.setWindowIcon((QtGui.QIcon('UI/Images/Window_Icon.png')))
         msgBox.setText(message)
         msgBox.setWindowTitle("QMessageBox Example")
-        msgBox.setStandardButtons(QMessageBox.Ok | QMessageBox.Cancel)
-        # msgBox.buttonClicked.connect(msgButtonClick)
+        msgBox.setStandardButtons(QMessageBox.Ok)
         msgBox.exec()
 
     def clear_fields(self):
@@ -71,8 +75,8 @@ class Register_Window(QtWidgets.QMainWindow):
         self.con_password.clear()
 
     def exit(self):
-        self.window_stack.setWindowTitle("Login")  # Setting Title of Stack to Home
-        self.window_stack.setFixedWidth(620)  # Width of Login Window
-        self.window_stack.setFixedHeight(285)  # Height of Login Window
-        self.window_stack.setCurrentWidget(self.login_window)  # Adding Login Window to Window Stack
+        self.window_stack.setWindowTitle("Login")                                   # Setting Title of Stack to Home
+        self.window_stack.setFixedWidth(620)                                        # Width of Login Window
+        self.window_stack.setFixedHeight(285)                                       # Height of Login Window
+        self.window_stack.setCurrentWidget(self.login_window)                       # Adding Login Window to Window Stack
 
