@@ -1,0 +1,71 @@
+from PyQt5 import QtWidgets, uic, QtGui
+from PyQt5.QtWidgets import QMessageBox
+from Database import insert_user
+
+
+class Register_Window(QtWidgets.QMainWindow):
+    def __init__(self, window_stack, login_window):
+        """Load SignUp UI and Extract all the user data"""
+        super(Register_Window, self).__init__()
+
+        uic.loadUi('UI\\SignUp_Window.ui', self)
+        self.show()
+
+        self.window_stack = window_stack
+        self.login_window = login_window
+
+        self.first_name = self.findChild(QtWidgets.QLineEdit, 'First_Name_Field')
+        self.last_name = self.findChild(QtWidgets.QLineEdit, 'Last_Name_Field')
+        self.email = self.findChild(QtWidgets.QLineEdit, 'Email_Field')
+        self.contact = self.findChild(QtWidgets.QLineEdit, 'Contact_Field')
+        self.username = self.findChild(QtWidgets.QLineEdit, 'Username_Field')
+        self.password = self.findChild(QtWidgets.QLineEdit, 'Password_Field')
+        self.con_password = self.findChild(QtWidgets.QLineEdit, 'Confirm_Pass_Field')
+        self.new_user = (self.username.text(), self.password.text(), self.first_name.text(),
+                         self.last_name.text(), self.email.text(), self.contact.text())
+
+        self.register_btn = self.findChild(QtWidgets.QPushButton, 'Register_Button')
+        self.clear_btn = self.findChild(QtWidgets.QPushButton, 'Clear_Button')
+        self.exit_btn = self.findChild(QtWidgets.QPushButton, 'Exit_Button')
+
+        self.register_btn.clicked.connect(self.validation)
+        self.clear_btn.clicked.connect(self.clear_fields)
+        self.exit_btn.clicked.connect(self.exit)
+
+    def validation(self):
+        if "" in self.new_user:
+            self.message_box("Please Fill All the Details")
+
+        elif self.password.text() == self.con_password.text():
+
+            insert_user(self.new_user)
+            self.message_box("You Have Successfully Registered with the IRIS System.")
+
+        else:
+            self.message_box("Passwords Do not Match.")
+
+    @staticmethod
+    def message_box(message):
+        msgBox = QMessageBox()
+        msgBox.setWindowIcon((QtGui.QIcon('UI/Images/Window_Icon.png')))
+        msgBox.setText(message)
+        msgBox.setWindowTitle("QMessageBox Example")
+        msgBox.setStandardButtons(QMessageBox.Ok | QMessageBox.Cancel)
+        # msgBox.buttonClicked.connect(msgButtonClick)
+        msgBox.exec()
+
+    def clear_fields(self):
+        self.first_name.clear()
+        self.last_name.clear()
+        self.email.clear()
+        self.contact.clear()
+        self.username.clear()
+        self.password.clear()
+        self.con_password.clear()
+
+    def exit(self):
+        self.window_stack.setWindowTitle("Login")  # Setting Title of Stack to Home
+        self.window_stack.setFixedWidth(620)  # Width of Login Window
+        self.window_stack.setFixedHeight(285)  # Height of Login Window
+        self.window_stack.setCurrentWidget(self.login_window)  # Adding Login Window to Window Stack
+
