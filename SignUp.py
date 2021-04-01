@@ -1,6 +1,7 @@
 from PyQt5 import QtWidgets, uic, QtGui
 from PyQt5.QtWidgets import QMessageBox
-from Database import insert_user
+# from Database import insert_user
+from Firebase_Operations import push_user
 
 
 class Register_Window(QtWidgets.QMainWindow):
@@ -21,8 +22,6 @@ class Register_Window(QtWidgets.QMainWindow):
         self.username = self.findChild(QtWidgets.QLineEdit, 'Username_Field')
         self.password = self.findChild(QtWidgets.QLineEdit, 'Password_Field')
         self.con_password = self.findChild(QtWidgets.QLineEdit, 'Confirm_Pass_Field')
-        self.new_user = (self.username.text(), self.password.text(), self.first_name.text(),
-                         self.last_name.text(), self.email.text(), self.contact.text())
 
         self.register_btn = self.findChild(QtWidgets.QPushButton, 'Register_Button')
         self.clear_btn = self.findChild(QtWidgets.QPushButton, 'Clear_Button')
@@ -33,12 +32,20 @@ class Register_Window(QtWidgets.QMainWindow):
         self.exit_btn.clicked.connect(self.exit)
 
     def validation(self):
-        if "" in self.new_user:
+        new_user = {
+            "Username": self.username.text(),
+            "Password" : self.password.text(),
+            "First Name" : self.first_name.text(),
+            "Last Name" : self.last_name.text(),
+            "Email ID" : self.email.text(),
+            "Contact" : self.contact.text()
+        }
+
+        if "" in new_user.values():
             self.message_box("Please Fill All the Details")
 
         elif self.password.text() == self.con_password.text():
-
-            insert_user(self.new_user)
+            push_user(new_user)
             self.message_box("You Have Successfully Registered with the IRIS System.")
 
         else:
