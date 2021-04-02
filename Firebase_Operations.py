@@ -1,7 +1,7 @@
 # Importing Dependencies
 import firebase_admin
-from firebase_admin import credentials
-from firebase_admin import firestore
+from firebase_admin import credentials, firestore
+from datetime import datetime
 
 cred = credentials.Certificate("Service_Account_Key.json")                          # Credentials of the Cloud Database
 firebase_admin.initialize_app(cred)                                                 # Initializing the Connection
@@ -32,9 +32,19 @@ def push_user_to_database(new_user):
 
 def get_data(document_id, field):
     user = db.collection("Users").document(document_id).get().to_dict()
-    print(user)
-    print(user[field])
     return user[field]
 
 
+def generate_log(username, action):
+
+    timestamp = datetime.now()
+    document_id = timestamp.strftime("%d-%m-%Y %H:%M:%S")
+
+    log = {
+        "Username" : username,
+        "Action" : action,
+        "Time Stamp" : timestamp
+    }
+
+    db.collection("Logs").document(document_id).set(log)
 

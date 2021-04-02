@@ -2,29 +2,30 @@ from PyQt5 import QtWidgets, uic
 from PyQt5.QtCore import QTimer
 from PyQt5.QtGui import QImage
 from PyQt5.QtGui import QPixmap
+from Firebase_Operations import generate_log
 import os
 import cv2
 
 
 class Home_Window(QtWidgets.QMainWindow):
 
-    def __init__(self, window_stack, login_window):
+    def __init__(self, window_stack):
         """Load the Home Window"""
-        super(Home_Window, self).__init__()                                                             # Call the inherited classes __init__ method
 
+        super(Home_Window, self).__init__()                                                             # Call the inherited classes __init__ method
         uic.loadUi('UI\\Monitoring_Window.ui', self)                                                    # Load the .ui file
-        self.show()                                                                                     # Show the GUI
 
         self.window_stack = window_stack
-        self.login_window = login_window
 
+        self.cap = None
+        self.username = None
         self.live_feed_section = self.findChild(QtWidgets.QLabel, 'video')                              # Live Video Feed Display Section
-        self.start_monitor_btn = self.findChild(QtWidgets.QPushButton, 'Monitor_Button')                    # Start Monitoring Button
-        self.rec_btn = self.findChild(QtWidgets.QPushButton, 'Record_Button')                               # Record Button
-        self.prev_rec_btn = self.findChild(QtWidgets.QPushButton, 'Prev_Rec_Button')                        # Previous Recordings Button
-        self.logout_btn = self.findChild(QtWidgets.QPushButton, 'Logout_Button')                            # Logout Button
+        self.start_monitor_btn = self.findChild(QtWidgets.QPushButton, 'Monitor_Button')                # Start Monitoring Button
+        self.rec_btn = self.findChild(QtWidgets.QPushButton, 'Record_Button')                           # Record Button
+        self.prev_rec_btn = self.findChild(QtWidgets.QPushButton, 'Prev_Rec_Button')                    # Previous Recordings Button
+        self.logout_btn = self.findChild(QtWidgets.QPushButton, 'Logout_Button')                        # Logout Button
         self.name_tag = self.findChild(QtWidgets.QLabel, 'Name_Label')
-        self.name_tag.setText(f"Welcome {login_window.username_field.text()}")
+
 
         self.timer = QTimer()                                                                           # Creating a Timer
         self.timer.timeout.connect(self.viewCam)                                                        # Set Timer Timeout callback function
@@ -86,7 +87,6 @@ class Home_Window(QtWidgets.QMainWindow):
             out.release()
 
     def logout(self):
-        self.window_stack.setCurrentWidget(self.login_window)
-        self.window_stack.setFixedWidth(620)
-        self.window_stack.setFixedHeight(285)
-
+        generate_log(self.username, "Sign-out")
+        self.window_stack.setCurrentIndex(0)
+        self.window_stack.resize(640, 240)

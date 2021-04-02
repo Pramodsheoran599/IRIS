@@ -13,15 +13,13 @@ def message_box(code, message):
 
 
 class Register_Window(QtWidgets.QMainWindow):
-    def __init__(self, window_stack, login_window):
+    def __init__(self, window_stack):
         """Load SignUp UI and Extract all the user data"""
         super(Register_Window, self).__init__()
 
         uic.loadUi('UI\\SignUp_Window.ui', self)
-        self.show()
 
         self.window_stack = window_stack
-        self.login_window = login_window
 
         self.first_name = self.findChild(QtWidgets.QLineEdit, 'First_Name_Field')
         self.last_name = self.findChild(QtWidgets.QLineEdit, 'Last_Name_Field')
@@ -73,6 +71,5 @@ class Register_Window(QtWidgets.QMainWindow):
 
     def exit(self):
         self.window_stack.setWindowTitle("Login")  # Setting Title of Stack to Home
-        self.window_stack.setFixedWidth(620)  # Width of Login Window
-        self.window_stack.setFixedHeight(285)  # Height of Login Window
-        self.window_stack.setCurrentWidget(self.login_window)  # Adding Login Window to Window Stack
+        self.window_stack.resize(640, 240)
+        self.window_stack.setCurrentIndex(0)  # Adding Login Window to Window Stack
