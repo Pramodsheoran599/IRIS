@@ -1,72 +1,67 @@
-from PyQt5 import QtCore, QtGui, QtWidgets
-from PyQt5.QtWidgets import QApplication, QMainWindow
-import sys
-from Login import Login_Window
-from Home import Home_Window
-from SignUp import Register_Window
+import cv2
+import numpy as np
 
+cap = cv2.VideoCapture(0, cv2.CAP_DSHOW)
 
-class Ui_Main(QtWidgets.QWidget):
-    def setupUi(self, Main):
-        Main.setObjectName("Main")
-        Main.resize(800, 480)
+# Load Yolo
+net = cv2.dnn.readNet("yolov3.weights", "yolov3.cfg")
 
-        self.QtStack = QtWidgets.QStackedLayout()
+with open("coco.names", "r") as f:
+    classes = [line.strip() for line in f.readlines()]
 
-        self.login_window = Login_Window()
-        self.home_window = Home_Window(self.QtStack)
-        self.register_window = Register_Window(self.QtStack)
+layer_names = net.getLayerNames()
+output_layers = [layer_names[i[0] - 1] for i in net.getUnconnectedOutLayers()]
+colors = np.random.uniform(0, 255, size=(len(classes), 3))
 
-        # self.Window1UI()
-        # self.Window2UI()
-        # self.Window3UI()
+while cap.isOpened():
+    ret, img = cap.read()
+    img = cv2.resize(img, None, fx=0.4, fy=0.4)
+    height, width, channels = img.shape
 
+    # Detecting objects
+    blob = cv2.dnn.blobFromImage(img, 0.00392, (416, 416), (0, 0, 0), True, crop=False)
 
-        self.QtStack.addWidget(self.home_window)
-        self.QtStack.addWidget(self.register_window)
-        self.QtStack.addWidget(self.login_window)
+    net.setInput(blob)
+    outs = net.forward(output_layers)
 
-    def Window1UI(self):
-        self.stack1.resize(800, 480)
+    # Showing informations on the screen
+    class_ids = []
+    confidences = []
+    boxes = []
+    for out in outs:
+        for detection in out:
+            scores = detection[5:]
+            class_id = np.argmax(scores)
+            confidence = scores[class_id]
+            if confidence > 0.5:
+                # Object detected
+                center_x = int(detection[0] * width)
+                center_y = int(detection[1] * height)
+                w = int(detection[2] * width)
+                h = int(detection[3] * height)
 
-        # PushButton1#
-        self.PushButton1 = QtWidgets.QPushButton(self.stack1)
-        self.PushButton1.setText("BUTTON 1")
-        self.PushButton1.setGeometry(QtCore.QRect(10, 10, 100, 100))
+                # Rectangle coordinates
+                x = int(center_x - w / 2)
+                y = int(center_y - h / 2)
 
-        # PushButton2#
-        self.PushButton2 = QtWidgets.QPushButton(self.stack1)
-        self.PushButton2.setText("BUTTON 2")
-        self.PushButton2.setGeometry(QtCore.QRect(150, 150, 100, 100))
+                boxes.append([x, y, w, h])
+                confidences.append(float(confidence))
+                class_ids.append(class_id)
 
-    def Window2UI(self):
-        self.stack2.resize(800, 480)
-        self.stack2.setStyleSheet("background: red")
+    indexes = cv2.dnn.NMSBoxes(boxes, confidences, 0.5, 0.4)
+    print(indexes)
+    font = cv2.FONT_HERSHEY_PLAIN
+    for i in range(len(boxes)):
+        if i in indexes:
+            x, y, w, h = boxes[i]
+            label = str(classes[class_ids[i]])
+            color = colors[class_ids[i]]
+            cv2.rectangle(img, (x, y), (x + w, y + h), color, 2)
+            cv2.putText(img, label, (x, y + 30), font, 3, color, 3)
+            cv2.imshow("Image", img)
 
-    def Window3UI(self):
-        self.stack3.resize(800, 480)
-        self.stack3.setStyleSheet("background: blue")
+    if cv2.waitKey(40) == 27:
+        break
 
-
-class Main(QMainWindow):
-    def __init__(self, parent=None):
-        super(Main, self).__init__(parent)
-
-        self.QtStack = QtWidgets.QStackedLayout()
-
-        self.login_window = Login_Window(self.QtStack)
-        self.home_window = Home_Window(self.QtStack)
-        self.register_window = Register_Window(self.QtStack)
-
-
-        self.QtStack.addWidget(self.home_window)
-        self.QtStack.addWidget(self.register_window)
-        self.QtStack.addWidget(self.login_window)
-
-        self.QtStack.setCurrentIndex(2)
-
-
-if __name__ == '__main__':
-    app = QApplication(sys.argv)
-    Main()
-    sys.exit(app.exec_())
+cv2.destroyAllWindows()
+cap.release()

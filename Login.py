@@ -36,10 +36,10 @@ class Login_Window(QMainWindow):
 
         elif user_exists("Users", username):                                            # If username exists in the database
             if password == get_data(username, "Password"):                              # And Passwords Match as well
-                generate_log(username, "Sign-in")                                         # Create a Log in database that a User has signed in
-                home_window.username = username
-                home_window.name_tag.setText(f"Welcome {username}")
-                window_stack.setCurrentIndex(1)                                  # Changing Window to Home Window
+                generate_log(username, "Sign-in")                                           # Create a Log in database that a User has signed in
+                home_window.username = username                                             # Passing Username to Home Window
+                home_window.name_tag.setText(f"Welcome {username}")                         # Setting Name Tag of Home Window
+                window_stack.setCurrentIndex(1)                                             # Changing Window to Home Window
                 window_stack.resize(950, 550)                                               # Dimensions of Home Window
                 window_stack.setWindowTitle("Home")                                         # Changing Title of Stack to Home
 
@@ -49,13 +49,10 @@ class Login_Window(QMainWindow):
         else:                                                                           # If Username doesn't Exist in the Database
             message_box("Error", "Username doesn't exist")
 
-    def log(self):
-        pass
-
     @staticmethod
     def register():
         """Change the Current Window to Register Window"""
-        window_stack.setCurrentIndex(2)                                  # Changing Window to Register Window
+        window_stack.setCurrentIndex(2)                                                 # Changing Window to Register Window
         window_stack.setWindowTitle("SignUp")                                           # Changing Title of Stack to Signup
         window_stack.resize(720, 460)                                                   # Dimensions of Home Window
 
@@ -68,7 +65,7 @@ if __name__ == "__main__":
 
     window_stack = QStackedWidget()                                                     # Window Stack Object for Switching between Windows
     login_window = Login_Window()                                                       # Login Window Object
-    home_window = Home_Window(window_stack)                               # Home Window Object
+    home_window = Home_Window(window_stack)                                             # Home Window Object
     register_window = Register_Window(window_stack)                                     # Register Window Object
 
     window_stack.setWindowTitle("Login")                                                # Setting Title of Stack to Home
