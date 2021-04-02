@@ -24,7 +24,7 @@ class Home_Window(QtWidgets.QMainWindow):
         self.prev_rec_btn = self.findChild(QtWidgets.QPushButton, 'Prev_Rec_Button')                        # Previous Recordings Button
         self.logout_btn = self.findChild(QtWidgets.QPushButton, 'Logout_Button')                            # Logout Button
         self.name_tag = self.findChild(QtWidgets.QLabel, 'Name_Label')
-        self.name_tag.setText(f"Welcome {login_window.username.text()}")
+        self.name_tag.setText(f"Welcome {login_window.username_field.text()}")
 
         self.timer = QTimer()                                                                           # Creating a Timer
         self.timer.timeout.connect(self.viewCam)                                                        # Set Timer Timeout callback function

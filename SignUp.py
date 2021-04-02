@@ -3,6 +3,15 @@ from PyQt5.QtWidgets import QMessageBox
 from Firebase_Operations import push_user_to_database
 
 
+def message_box(code, message):
+    msgBox = QMessageBox()
+    msgBox.setWindowIcon((QtGui.QIcon('UI/Images/Window_Icon.png')))
+    msgBox.setText(message)
+    msgBox.setWindowTitle("QMessageBox Example")
+    msgBox.setStandardButtons(QMessageBox.Ok)
+    msgBox.exec()
+
+
 class Register_Window(QtWidgets.QMainWindow):
     def __init__(self, window_stack, login_window):
         """Load SignUp UI and Extract all the user data"""
@@ -34,36 +43,24 @@ class Register_Window(QtWidgets.QMainWindow):
 
         new_user = {
             "Username": self.username.text(),
-            "Password" : self.password.text(),
-            "First Name" : self.first_name.text(),
-            "Last Name" : self.last_name.text(),
-            "Email ID" : self.email.text(),
-            "Contact" : self.contact.text()
+            "Password": self.password.text(),
+            "First Name": self.first_name.text(),
+            "Last Name": self.last_name.text(),
+            "Email ID": self.email.text(),
+            "Contact": self.contact.text()
         }
 
         if "" in new_user.values():
-            self.message_box("Please Fill All the Details")
+            message_box("Error", "Please Fill All the Details")
 
         elif self.password.text() == self.con_password.text():
             if push_user_to_database(new_user):
-
-                self.message_box("You Have Successfully Registered with the IRIS System.")
-                print("success")
+                message_box("Success", "You Have Successfully Registered with the IRIS System.")
             else:
-
-                self.message_box("You are Already Registered with the IRIS System.")
+                message_box("Error", "You are Already Registered with the IRIS System.")
 
         else:
-            self.message_box("Passwords Do not Match.")
-
-    @staticmethod
-    def message_box(message):
-        msgBox = QMessageBox()
-        msgBox.setWindowIcon((QtGui.QIcon('UI/Images/Window_Icon.png')))
-        msgBox.setText(message)
-        msgBox.setWindowTitle("QMessageBox Example")
-        msgBox.setStandardButtons(QMessageBox.Ok)
-        msgBox.exec()
+            message_box("Error", "Passwords Do not Match.")
 
     def clear_fields(self):
         self.first_name.clear()
@@ -75,8 +72,7 @@ class Register_Window(QtWidgets.QMainWindow):
         self.con_password.clear()
 
     def exit(self):
-        self.window_stack.setWindowTitle("Login")                                   # Setting Title of Stack to Home
-        self.window_stack.setFixedWidth(620)                                        # Width of Login Window
-        self.window_stack.setFixedHeight(285)                                       # Height of Login Window
-        self.window_stack.setCurrentWidget(self.login_window)                       # Adding Login Window to Window Stack
-
+        self.window_stack.setWindowTitle("Login")  # Setting Title of Stack to Home
+        self.window_stack.setFixedWidth(620)  # Width of Login Window
+        self.window_stack.setFixedHeight(285)  # Height of Login Window
+        self.window_stack.setCurrentWidget(self.login_window)  # Adding Login Window to Window Stack

@@ -30,4 +30,11 @@ def push_user_to_database(new_user):
         return 1
 
 
+def get_data(document_id, field):
+    user = db.collection("Users").document(document_id).get().to_dict()
+    print(user)
+    print(user[field])
+    return user[field]
+
+
 

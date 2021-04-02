@@ -3,6 +3,8 @@ from PyQt5 import QtWidgets, uic, QtGui
 from Home import Home_Window
 from SignUp import Register_Window
 from qt_material import apply_stylesheet
+from Firebase_Operations import user_exists, get_data
+from SignUp import message_box
 import sys
 
 
@@ -17,8 +19,8 @@ class Login_Window(QtWidgets.QMainWindow):
         self.setWindowIcon((QtGui.QIcon('UI/Images/Window_Icon.png')))
         self.show()                                                                     # Show the GUI
 
-        self.username = self.findChild(QtWidgets.QLineEdit, 'Username_Field')           # Username from UI file
-        self.password = self.findChild(QtWidgets.QLineEdit, 'Password_Field')           # Password from UI file
+        self.username_field = self.findChild(QtWidgets.QLineEdit, 'Username_Field')     # Username from UI file
+        self.password_field = self.findChild(QtWidgets.QLineEdit, 'Password_Field')     # Password from UI file
         self.invalid_label = self.findChild(QtWidgets.QLabel, 'Invalid_Label')          # Invalid Details Label
         self.invalid_label.setVisible(False)                                            # By Default Hidden
 
@@ -30,15 +32,24 @@ class Login_Window(QtWidgets.QMainWindow):
 
     def login_validation(self):
         """Validate the username and password"""
+        username = self.username_field.text()                                           # Extract Username form the Field
+        password = self.password_field.text()                                           # Extract Password form the Field
 
-        if self.username.text() == "Chaitanya" and self.password.text() == "":
-            window_stack.setCurrentWidget(home_window)                                  # Changing Window to Home Window
-            window_stack.setFixedWidth(950)                                             # Width of Home Window
-            window_stack.setFixedHeight(550)                                            # Height of Home Window
-            window_stack.setWindowTitle("Home")                                         # Changing Title of Stack to Home
+        if username == '' or password == '':                                            # If Either of Fields are Blank
+            message_box("Error", "Please Fill all the Details.")                            # Display Error Message
 
-        else:
-            self.invalid_label.setVisible(True)                                         # If Validation Failed Display Error Message
+        elif user_exists("Users", username):                                            # If username exists in the database
+            if password == get_data(username, "Password"):                              # And Passwords Match as well
+                window_stack.setCurrentWidget(home_window)                                  # Changing Window to Home Window
+                window_stack.setFixedWidth(950)                                             # Width of Home Window
+                window_stack.setFixedHeight(550)                                            # Height of Home Window
+                window_stack.setWindowTitle("Home")                                         # Changing Title of Stack to Home
+
+            else:                                                                       # If Password does not match in database
+                message_box("Error", "Invalid Password")
+
+        else:                                                                           # If Username doesn't Exist in the Database
+            message_box("Error", "Username doesn't exist")
 
     @staticmethod
     def register():
