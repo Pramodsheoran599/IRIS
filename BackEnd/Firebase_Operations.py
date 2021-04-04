@@ -3,7 +3,7 @@ import firebase_admin
 from firebase_admin import credentials, firestore
 from datetime import datetime
 
-cred = credentials.Certificate("Service_Account_Key.json")                          # Credentials of the Cloud Database
+cred = credentials.Certificate("..\\Service_Account_Key.json")                          # Credentials of the Cloud Database
 firebase_admin.initialize_app(cred)                                                 # Initializing the Connection
 
 db = firestore.client()                                                             # Database Object

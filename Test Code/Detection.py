@@ -8,10 +8,8 @@ while cap.isOpened():
     ret, frame = cap.read()
     if frame is None:
         break
-    print(frame.shape[:])
-    roi = frame[0:240, 0:320]
 
-    gray = cv2.cvtColor(roi, cv2.COLOR_BGR2GRAY)
+    gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
     blur = cv2.GaussianBlur(gray, (3, 3), 0)
     fgmask = fgbg.apply(blur)
 
@@ -25,7 +23,7 @@ while cap.isOpened():
             continue
 
         # x = roi.shape[:]
-        cv2.rectangle(frame, (x, 90 + y), (x + w, 90 + y + h), (0, 255, 0), 2)
+        cv2.rectangle(frame, (x, y), (x + w, y + h), (0, 255, 0), 2)
 
     # cv2.drawContours(frame1, contours, -1, (0, 255, 0), 2)
     cv2.imshow("Frame", frame)

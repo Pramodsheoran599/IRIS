@@ -1,11 +1,11 @@
 from PyQt5 import QtWidgets, uic, QtGui
 from PyQt5.QtWidgets import QMessageBox
-from Firebase_Operations import push_user_to_database
+from BackEnd.Firebase_Operations import push_user_to_database
 
 
 def message_box(code, message):
     msgBox = QMessageBox()
-    msgBox.setWindowIcon((QtGui.QIcon('UI/Images/Window_Icon.png')))
+    msgBox.setWindowIcon((QtGui.QIcon('Ui Files/Images/Window_Icon.png')))
     msgBox.setText(message)
     msgBox.setWindowTitle("QMessageBox Example")
     msgBox.setStandardButtons(QMessageBox.Ok)
@@ -14,10 +14,10 @@ def message_box(code, message):
 
 class Register_Window(QtWidgets.QMainWindow):
     def __init__(self, window_stack):
-        """Load SignUp UI and Extract all the user data"""
+        """Load SignUp Ui Files and Extract all the user data"""
         super(Register_Window, self).__init__()
 
-        uic.loadUi('UI\\SignUp_Window.ui', self)
+        uic.loadUi('Ui Files\\SignUp_Window.ui', self)
 
         self.window_stack = window_stack
 

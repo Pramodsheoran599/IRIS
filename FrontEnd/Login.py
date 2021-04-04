@@ -4,7 +4,7 @@ from PyQt5.QtWidgets import QApplication, QMainWindow, QStackedWidget, QLineEdit
 from qt_material import apply_stylesheet
 from Home import Home_Window
 from SignUp import Register_Window
-from Firebase_Operations import user_exists, get_data, generate_log
+from BackEnd.Firebase_Operations import user_exists, get_data, generate_log
 from SignUp import message_box
 import sys
 
@@ -15,10 +15,10 @@ class Login_Window(QMainWindow):
         """Load the Login Window and Extract the username, password and run validation"""
 
         super(Login_Window, self).__init__()                                            # Call the inherited classes __init__ method
-        uic.loadUi('UI\\Login_Window.ui', self)                                         # Load the .ui file
+        uic.loadUi('Ui Files\\Login_Window.ui', self)                                   # Load the .ui file
 
-        self.username_field = self.findChild(QLineEdit, 'Username_Field')               # Username from UI file
-        self.password_field = self.findChild(QLineEdit, 'Password_Field')               # Password from UI file
+        self.username_field = self.findChild(QLineEdit, 'Username_Field')               # Username from Ui Files file
+        self.password_field = self.findChild(QLineEdit, 'Password_Field')               # Password from Ui Files file
 
         login_button = self.findChild(QPushButton, 'Login_Button')                      # Login Button
         login_button.clicked.connect(self.login_validation)                             # Call login_validation on Button Press
@@ -60,7 +60,7 @@ class Login_Window(QMainWindow):
 # Driver Code
 if __name__ == "__main__":
     app = QApplication(sys.argv)                                                        # Main Application
-    app.setWindowIcon(QtGui.QIcon("UI\\Images\\Window_Icon"))                           # Setting Application Icon
+    app.setWindowIcon(QtGui.QIcon("Ui Files\\Images\\Window_Icon"))                     # Setting Application Icon
     apply_stylesheet(app, theme='dark_amber.xml')                                       # Setting Theme of Application
 
     window_stack = QStackedWidget()                                                     # Window Stack Object for Switching between Windows
