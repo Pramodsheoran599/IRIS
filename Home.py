@@ -37,12 +37,14 @@ class Home_Window(QtWidgets.QMainWindow):
         if not self.timer.isActive():                                                                   # if timer is stopped
             self.cap = cv2.VideoCapture(0, cv2.CAP_DSHOW)                                               # Create video capture
             self.timer.start(20)                                                                        # start timer
+            self.live_feed_section.setVisible(True)
             self.start_monitor_btn.setText("Stop Monitoring")                                           # update Button Text
 
         else:                                                                                           # if timer is started
             self.timer.stop()                                                                           # stop timer
             cv2.destroyAllWindows()
             self.cap.release()                                                                          # Release video capture
+            self.live_feed_section.setVisible(False)
             self.start_monitor_btn.setText("Start Monitoring")                                          # Update Button Text
 
     def viewCam(self):
