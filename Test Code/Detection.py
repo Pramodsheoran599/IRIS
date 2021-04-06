@@ -1,8 +1,8 @@
 import cv2
 import numpy as np
 
-cap = cv2.VideoCapture('Videos\\pedestrians.avi')                                                   # Loading the Video
-fgbg = cv2.createBackgroundSubtractorKNN(history=100)                                                         # Background Subtractor
+cap = cv2.VideoCapture('Videos\\pedestrians.avi')                                                  # Loading the Video
+fgbg = cv2.createBackgroundSubtractorKNN()                                                         # Background Subtractor
 kernel = cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (3, 3))                                       # Kernel
 
 while cap.isOpened():
@@ -44,7 +44,7 @@ while cap.isOpened():
     cv2.imshow("Frame", frame)                                                                      # Display Orignal Frame
     cv2.imshow("Dilated", dilated)                                                                  # Display Dilated Frame
 
-    if cv2.waitKey(60) == 27:                                                                       # If Esc Key Pressed
+    if cv2.waitKey(20) == 27:                                                                       # If Esc Key Pressed
         break                                                                                           # Exit the Loop
 
 cv2.destroyAllWindows()

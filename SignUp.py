@@ -1,6 +1,6 @@
 from PyQt5 import QtWidgets, uic, QtGui
 from PyQt5.QtWidgets import QMessageBox
-from BackEnd.Firebase_Operations import push_user_to_database
+from Firebase_Operations import push_user_to_database
 
 
 def message_box(code, message):

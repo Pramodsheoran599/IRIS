@@ -1,7 +1,7 @@
 from PyQt5 import QtWidgets, uic
 from PyQt5.QtCore import QTimer
 from PyQt5.QtGui import QImage, QPixmap
-from BackEnd.Firebase_Operations import generate_log
+from Firebase_Operations import generate_log
 import os
 import cv2
 
@@ -28,7 +28,7 @@ class Home_Window(QtWidgets.QMainWindow):
         self.timer.timeout.connect(self.viewCam)                                                        # Set Timer Timeout callback function
         self.start_monitor_btn.clicked.connect(self.controlTimer)                                       # set control_bt callback clicked  function
         self.rec_btn.clicked.connect(self.record_live_feed)                                             # Record the Live Feed
-        self.prev_rec_btn.clicked.connect(lambda: os.startfile("..\\Recordings"))                           # Open previous Recordings Folder
+        self.prev_rec_btn.clicked.connect(lambda: os.startfile("Recordings"))                           # Open previous Recordings Folder
         self.logout_btn.clicked.connect(self.logout)
 
     def controlTimer(self):
@@ -80,6 +80,6 @@ class Home_Window(QtWidgets.QMainWindow):
             out.release()
 
     def logout(self):
-        generate_log(self.username, "Sign-out")
+        # generate_log(self.username, "Sign-out")
         self.window_stack.setCurrentIndex(0)
         self.window_stack.resize(640, 240)

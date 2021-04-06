@@ -3,10 +3,10 @@ import firebase_admin
 from firebase_admin import credentials, firestore
 from datetime import datetime
 
-cred = credentials.Certificate("..\\Service_Account_Key.json")                      # Credentials of the Cloud Database
-firebase_admin.initialize_app(cred)                                                 # Initializing the Connection
+cred = credentials.Certificate("Service_Account_Key.json")  # Credentials of the Cloud Database
+firebase_admin.initialize_app(cred)  # Initializing the Connection
 
-db = firestore.client()                                                             # Database Object
+db = firestore.client()  # Database Object
 
 
 def user_exists(collection_name, document_id):
@@ -20,13 +20,13 @@ def user_exists(collection_name, document_id):
 
 def push_user_to_database(new_user):
     """Add User to The Database The input Parameter is a Dictionary"""
-    document_id = new_user["Username"]                                              # Each Document Id is set to respective Username
+    document_id = new_user["Username"]  # Each Document Id is set to respective Username
 
-    if user_exists("Users", document_id):                                            # If User Already Registered return -1
+    if user_exists("Users", document_id):  # If User Already Registered return -1
         return 0
 
     else:
-        db.collection("Users").document(document_id).set(new_user)                  # Document Reference
+        db.collection("Users").document(document_id).set(new_user)  # Document Reference
         return 1
 
 
@@ -36,14 +36,13 @@ def get_data(document_id, field):
 
 
 def generate_log(username, action):
-
     timestamp = datetime.now()
     document_id = timestamp.strftime("%d-%m-%Y %H:%M:%S")
 
     log = {
-        "Username" : username,
-        "Action" : action,
-        "Time Stamp" : timestamp
+        "Username": username,
+        "Action": action,
+        "Time Stamp": timestamp
     }
 
     db.collection("Logs").document(document_id).set(log)
