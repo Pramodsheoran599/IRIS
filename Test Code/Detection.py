@@ -16,10 +16,10 @@ while cap.isOpened():
     fgmask = fgbg.apply(blur)                                                                       # Creating Foreground Mask
 
     diff = blank_image - fgmask                                                                     # Difference Between Mask and Blank Image
-    # dilated = cv2.dilate(diff, (7, 7), iterations=2)                                                # Dilating the Difference
+    dilated = cv2.dilate(diff, (7, 7), iterations=2)                                                # Dilating the Difference
 
-    # diff = cv2.morphologyEx(diff, cv2.MORPH_OPEN, (3, 3), iterations=3)                      # Opening ( False Positives Correction )
-    # diff = cv2.morphologyEx(diff, cv2.MORPH_CROSS, (3, 3), iterations=3)                     # Closing ( False Negatives Correction )
+    diff = cv2.morphologyEx(diff, cv2.MORPH_OPEN, (3, 3), iterations=3)                      # Opening ( False Positives Correction )
+    diff = cv2.morphologyEx(diff, cv2.MORPH_CROSS, (3, 3), iterations=3)                     # Closing ( False Negatives Correction )
 
     dilated = cv2.dilate(diff, (3, 3))
     contours, _ = cv2.findContours(dilated, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)                 # Finding Contours

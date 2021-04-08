@@ -1,7 +1,7 @@
 from PyQt5 import QtWidgets, uic
 from PyQt5.QtCore import QTimer
 from PyQt5.QtGui import QImage, QPixmap
-from Firebase_Operations import generate_log
+from BackEnd.Firebase_Operations import generate_log
 import os
 import cv2
 
@@ -80,6 +80,6 @@ class Home_Window(QtWidgets.QMainWindow):
             out.release()
 
     def logout(self):
-        # generate_log(self.username, "Sign-out")
+        generate_log(self.username, "Sign-out")
         self.window_stack.setCurrentIndex(0)
         self.window_stack.resize(640, 240)

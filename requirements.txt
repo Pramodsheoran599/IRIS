@@ -1,0 +1,7 @@
+PyQt5
+qt-material
+opencv-contrib-python
+numpy
+firebase-admin
+av
+tqdm
