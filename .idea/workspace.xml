@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e24ce801-9aa9-466b-aa1e-71d2f8778b08" name="Default Changelist" comment="Setup Again">
+    <list default="true" id="e24ce801-9aa9-466b-aa1e-71d2f8778b08" name="Default Changelist" comment="Deleted Database.py">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BackEnd/Database.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/BackEnd/Firebase_Operations.py" beforeDir="false" afterPath="$PROJECT_DIR$/BackEnd/Firebase_Operations.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FrontEnd/Login.py" beforeDir="false" afterPath="$PROJECT_DIR$/FrontEnd/Login.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FrontEnd/Ui Files/Login_Window.ui" beforeDir="false" afterPath="$PROJECT_DIR$/FrontEnd/Ui Files/Login_Window.ui" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,7 +30,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/FrontEnd/Login.py" />
-    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.General" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="ReaderModeSettings">
     <option name="showLigatures" value="false" />
@@ -106,8 +106,8 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Python.Login" />
       <item itemvalue="Python.Firebase_Operations" />
+      <item itemvalue="Python.Login" />
     </list>
     <recent_temporary>
       <list>
@@ -131,7 +131,14 @@
       <option name="project" value="LOCAL" />
       <updated>1617883631193</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Deleted Database.py">
+      <created>1617887916555</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1617887916555</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -148,6 +155,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Setup Again" />
-    <option name="LAST_COMMIT_MESSAGE" value="Setup Again" />
+    <MESSAGE value="Deleted Database.py" />
+    <option name="LAST_COMMIT_MESSAGE" value="Deleted Database.py" />
   </component>
 </project>

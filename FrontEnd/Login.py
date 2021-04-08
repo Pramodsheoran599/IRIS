@@ -23,8 +23,8 @@ class Login_Window(QMainWindow):
         login_button = self.findChild(QPushButton, 'Login_Button')                      # Login Button
         login_button.clicked.connect(self.login_validation)                             # Call login_validation on Button Press
 
-        register_btn = self.findChild(QPushButton, 'Register_Button')                   # Register Button
-        register_btn.clicked.connect(self.register)                                     # Call Register on Button Press
+        sign_up_btn = self.findChild(QPushButton, 'SignUp_Button')                   # Register Button
+        sign_up_btn.clicked.connect(self.register)                                     # Call Register on Button Press
 
     def login_validation(self):
         """Validate the username and password"""
