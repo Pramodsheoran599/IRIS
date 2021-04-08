@@ -1,6 +1,6 @@
 # IRIS : Suspicious Behaviour Detector
 
-#### 1) Dependencies :
+#### 1) Dependencies For this project:
         - PyQt5 : For GUI
         - qt-materials : For Setting Theme for GUI
         - OpenCV : For Computer Vision
