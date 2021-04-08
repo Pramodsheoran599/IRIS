@@ -1,4 +1,4 @@
-# IRIS : Suspicious Behaviour Detector
+## IRIS : Suspicious Behaviour Detector
 
 #### 1) Dependencies For this project:
         - PyQt5 : For GUI
