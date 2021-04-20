@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e24ce801-9aa9-466b-aa1e-71d2f8778b08" name="Default Changelist" comment="Deleted Database.py">
+    <list default="true" id="e24ce801-9aa9-466b-aa1e-71d2f8778b08" name="Default Changelist" comment="Register Button Name Changed to SignUp">
+      <change beforePath="$PROJECT_DIR$/.idea/IRIS.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/IRIS.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FrontEnd/Login.py" beforeDir="false" afterPath="$PROJECT_DIR$/FrontEnd/Login.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FrontEnd/Ui Files/Login_Window.ui" beforeDir="false" afterPath="$PROJECT_DIR$/FrontEnd/Ui Files/Login_Window.ui" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test Code/Detection.py" beforeDir="false" afterPath="$PROJECT_DIR$/Test Code/Detection.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -15,6 +17,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Setup Script" />
+        <option value="Python Script" />
       </list>
     </option>
   </component>
@@ -29,8 +32,8 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/FrontEnd/Login.py" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="preferences.editor" />
   </component>
   <component name="ReaderModeSettings">
     <option name="showLigatures" value="false" />
@@ -41,8 +44,8 @@
       <recent name="C:\Users\JiN\Desktop\IRIS" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.Login">
-    <configuration name="Firebase_Operations" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Python.star_skeleton (1)">
+    <configuration name="Detection" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="IRIS" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -50,11 +53,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Test Code" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="C:\Users\JiN\Desktop\IRIS\BackEnd\Firebase_Operations.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Test Code/Detection.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -63,28 +66,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="Firebase_Operations" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="IRIS" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/BackEnd" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="C:\Users\JiN\Desktop\IRIS\BackEnd\Firebase_Operations.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="Login" type="PythonConfigurationType" factoryName="Python">
+    <configuration name="Login" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="IRIS" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -105,13 +87,83 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="PoseEstimation" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="IRIS" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Test Code" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Test Code/PoseEstimation.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="star_skeleton (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="IRIS" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Test Code" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Test Code/star_skeleton.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="star_skeleton" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="IRIS" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Test Code" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="C:\Users\JiN\Desktop\IRIS\Test Code\star_skeleton.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <list>
-      <item itemvalue="Python.Firebase_Operations" />
       <item itemvalue="Python.Login" />
+      <item itemvalue="Python.PoseEstimation" />
+      <item itemvalue="Python.Detection" />
+      <item itemvalue="Python.star_skeleton" />
+      <item itemvalue="Python.star_skeleton (1)" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.Firebase_Operations" />
+        <item itemvalue="Python.star_skeleton (1)" />
+        <item itemvalue="Python.Detection" />
+        <item itemvalue="Python.PoseEstimation" />
+        <item itemvalue="Python.star_skeleton" />
+        <item itemvalue="Python.Login" />
       </list>
     </recent_temporary>
   </component>
@@ -138,7 +190,14 @@
       <option name="project" value="LOCAL" />
       <updated>1617887916555</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Register Button Name Changed to SignUp">
+      <created>1617892119398</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1617892119398</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -156,6 +215,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Setup Again" />
     <MESSAGE value="Deleted Database.py" />
-    <option name="LAST_COMMIT_MESSAGE" value="Deleted Database.py" />
+    <MESSAGE value="Register Button Name Changed to SignUp" />
+    <option name="LAST_COMMIT_MESSAGE" value="Register Button Name Changed to SignUp" />
   </component>
 </project>

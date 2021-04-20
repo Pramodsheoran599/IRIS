@@ -1,9 +1,11 @@
 import cv2
 import numpy as np
+import PoseEstimation as PE
 
 cap = cv2.VideoCapture('Videos\\pedestrians.avi')                                                  # Loading the Video
 fgbg = cv2.createBackgroundSubtractorKNN()                                                         # Background Subtractor
 kernel = cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (3, 3))                                       # Kernel
+detector = PE.poseDetector()
 
 while cap.isOpened():
     ret, frame = cap.read()                                                                         # Read the Frame from Video
@@ -39,12 +41,14 @@ while cap.isOpened():
     for person in persons:                                                                          # For each person
         x, y, w, h = person                                                                             # Coordinates Unpacking
         centroid = ((x + w//2), (y + h//2))                                                             # Centroid
+        roi = frame[y:y+h, x:x+w]
+        detection = detector.findPose(roi)
         cv2.circle(frame, centroid, 2, (0, 0, 255), 2)                                                  # Draw Centroid
 
     cv2.imshow("Frame", frame)                                                                      # Display Orignal Frame
     cv2.imshow("Dilated", dilated)                                                                  # Display Dilated Frame
 
-    if cv2.waitKey(20) == 27:                                                                       # If Esc Key Pressed
+    if cv2.waitKey(1) == 27:                                                                       # If Esc Key Pressed
         break                                                                                           # Exit the Loop
 
 cv2.destroyAllWindows()
