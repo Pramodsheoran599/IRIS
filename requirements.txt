@@ -5,3 +5,6 @@ numpy
 firebase-admin
 av
 tqdm
+mediapipe
+scipy
+matplotlib
