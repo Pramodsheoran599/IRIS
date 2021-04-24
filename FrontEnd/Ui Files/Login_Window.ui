@@ -31,7 +31,7 @@
   <property name="styleSheet">
    <string notr="true">QMainWindow
 {
-
+	background-color: 
 }</string>
   </property>
   <widget class="QWidget" name="centralwidget">

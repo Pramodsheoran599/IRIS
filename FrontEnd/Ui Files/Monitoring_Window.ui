@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>982</width>
-    <height>628</height>
+    <width>983</width>
+    <height>577</height>
    </rect>
   </property>
   <property name="font">
@@ -197,6 +197,22 @@
       </widget>
      </item>
     </layout>
+   </widget>
+   <widget class="QPushButton" name="Alert_Button">
+    <property name="geometry">
+     <rect>
+      <x>890</x>
+      <y>50</y>
+      <width>61</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-color: rgb(49, 54, 59);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
    </widget>
   </widget>
  </widget>

@@ -1,35 +1,45 @@
-from PyQt5 import QtWidgets, uic
+import cv2
+import os
+import sys
+
+from PyQt5 import uic
 from PyQt5.QtCore import QTimer
 from PyQt5.QtGui import QImage, QPixmap
+from PyQt5.QtWidgets import QApplication, QMainWindow, QPushButton, QLabel
+
+import Alerts_and_Messages
 from BackEnd.Firebase_Operations import generate_log
-import os
-import cv2
 
 
-class Home_Window(QtWidgets.QMainWindow):
+class Home_Window(QMainWindow):
 
-    def __init__(self, window_stack):
+    def __init__(self, window_stack = None):
         """Load the Home Window"""
 
         super(Home_Window, self).__init__()
-        uic.loadUi('Ui Files\\Monitoring_Window.ui', self)                                                    # Load the .ui file
+        uic.loadUi(r'Ui Files\Monitoring_Window.ui', self)                                              # Load the .ui file
 
         self.window_stack = window_stack                                                                # Accepting Window Stack
         self.cap = None                                                                                 # Initializing Capture Variable
+
         self.username = None                                                                            # Initializing Username
-        self.live_feed_section = self.findChild(QtWidgets.QLabel, 'video')                              # Live Video Feed Display Section
-        self.start_monitor_btn = self.findChild(QtWidgets.QPushButton, 'Monitor_Button')                # Start Monitoring Button
-        self.rec_btn = self.findChild(QtWidgets.QPushButton, 'Record_Button')                           # Record Button
-        self.prev_rec_btn = self.findChild(QtWidgets.QPushButton, 'Prev_Rec_Button')                    # Previous Recordings Button
-        self.logout_btn = self.findChild(QtWidgets.QPushButton, 'Logout_Button')                        # Logout Button
-        self.name_tag = self.findChild(QtWidgets.QLabel, 'Name_Label')                                  # Name Tag
+        self.name_tag = self.findChild(QLabel, 'Name_Label')                                   # Name Tag
+        self.live_feed_section = self.findChild (QLabel, 'video')                              # Live Video Feed Display Section
+
+        self.start_monitor_btn = self.findChild (QPushButton, 'Monitor_Button')                # Start Monitoring Button
+        self.rec_btn = self.findChild (QPushButton, 'Record_Button')                           # Record Button
+        self.prev_rec_btn = self.findChild (QPushButton, 'Prev_Rec_Button')                    # Previous Recordings Button
+        self.logout_btn = self.findChild (QPushButton, 'Logout_Button')                        # Logout Button
+        self.alert_btn = self.findChild (QPushButton, 'Alert_Button')
+
         self.timer = QTimer()                                                                           # Creating a Timer
 
         self.timer.timeout.connect(self.viewCam)                                                        # Set Timer Timeout callback function
         self.start_monitor_btn.clicked.connect(self.controlTimer)                                       # set control_bt callback clicked  function
         self.rec_btn.clicked.connect(self.record_live_feed)                                             # Record the Live Feed
-        self.prev_rec_btn.clicked.connect(lambda: os.startfile("Recordings"))                           # Open previous Recordings Folder
+        self.prev_rec_btn.clicked.connect(lambda: os.startfile(r"..\Recordings"))                           # Open previous Recordings Folder
         self.logout_btn.clicked.connect(self.logout)
+        self.alert_btn.clicked.connect(self.alert)
 
     def controlTimer(self):
         """Load the Login Window and Extract the username, password and run validation"""
@@ -63,7 +73,7 @@ class Home_Window(QtWidgets.QMainWindow):
         else:
             frame_width = int(self.cap.get(3))
             frame_height = int(self.cap.get(4))
-            out = cv2.VideoWriter('Recordings/output.avi', cv2.VideoWriter_fourcc('M', 'J', 'P', 'G'), 10, (frame_width, frame_height))
+            out = cv2.VideoWriter(r'Recordings\output.avi', cv2.VideoWriter_fourcc('M', 'J', 'P', 'G'), 10, (frame_width, frame_height))
 
             while True:
                 ret, frame = self.cap.read()
@@ -83,3 +93,16 @@ class Home_Window(QtWidgets.QMainWindow):
         generate_log(self.username, "Sign-out")
         self.window_stack.setCurrentIndex(0)
         self.window_stack.resize(640, 240)
+
+    def alert(self):
+        self.alert_window = Alerts_and_Messages.Alert()
+        self.alert_window.show()
+
+
+if __name__ == "__main__":
+    app = QApplication(sys.argv)
+
+    home_window = Home_Window()
+    home_window.show()
+
+    sys.exit(app.exec_())

@@ -37,7 +37,7 @@ def calc_extreme_points(centroid, countour_points):
 
     x = np.array(range(N))
     di = np.array(di)
-
+    print(di)
     sortId = np.argsort(x)
     x = x[sortId]
     y = di[sortId]
@@ -75,12 +75,12 @@ if __name__ == "__main__":
     cv.drawContours(original_img, contours, -1, (0, 255, 0), 2)
 
     centroid = calc_centroid(contour_points)
-    POINT = tuple(contour_points[288][0])
+    POINT = tuple(contour_points[755][0])
 
     calc_extreme_points(centroid, contour_points)
     cv.circle(original_img, centroid, 8, (0, 0, 255), thickness=cv.FILLED)
     cv.circle(original_img, POINT, 8, (0, 0, 255), thickness=cv.FILLED)
-    cv.line(original_img, centroid, POINT, (255, 0, 0), 3)
+    # cv.line(original_img, centroid, POINT, (255, 0, 0), 3)
 
     cv.imshow("Orignal Image", original_img)
     cv.imshow("Edge Image", edged)

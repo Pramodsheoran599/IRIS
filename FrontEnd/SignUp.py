@@ -1,37 +1,41 @@
-from PyQt5 import QtWidgets, uic, QtGui
-from PyQt5.QtWidgets import QMessageBox
+# Importing Libraries
+import sys
+
+from PyQt5 import uic, QtGui
+from PyQt5.QtWidgets import QMessageBox, QApplication, QMainWindow, QLineEdit, QPushButton
+
 from BackEnd.Firebase_Operations import push_user_to_database
 
 
 def message_box(code, message):
     msg_box = QMessageBox()
-    msg_box.setWindowIcon((QtGui.QIcon('Ui Files/Images/Window_Icon.png')))
+    msg_box.setWindowIcon((QtGui.QIcon(r'Ui Files\Images\Window_Icon.png')))
     msg_box.setText(message)
     msg_box.setWindowTitle("QMessageBox Example")
     msg_box.setStandardButtons(QMessageBox.Ok)
     msg_box.exec()
 
 
-class Register_Window(QtWidgets.QMainWindow):
-    def __init__(self, window_stack):
+class SignUp_Window(QMainWindow):
+    def __init__(self, window_stack = None):
         """Load SignUp Ui Files and Extract all the user data"""
-        super(Register_Window, self).__init__()
+        super(SignUp_Window, self).__init__()
 
-        uic.loadUi('Ui Files\\SignUp_Window.ui', self)
+        uic.loadUi(r'Ui Files\SignUp_Window.ui', self)
 
         self.window_stack = window_stack
 
-        self.first_name = self.findChild(QtWidgets.QLineEdit, 'First_Name_Field')
-        self.last_name = self.findChild(QtWidgets.QLineEdit, 'Last_Name_Field')
-        self.email = self.findChild(QtWidgets.QLineEdit, 'Email_Field')
-        self.contact = self.findChild(QtWidgets.QLineEdit, 'Contact_Field')
-        self.username = self.findChild(QtWidgets.QLineEdit, 'Username_Field')
-        self.password = self.findChild(QtWidgets.QLineEdit, 'Password_Field')
-        self.con_password = self.findChild(QtWidgets.QLineEdit, 'Confirm_Pass_Field')
+        self.first_name = self.findChild(QLineEdit, 'First_Name_Field')
+        self.last_name = self.findChild(QLineEdit, 'Last_Name_Field')
+        self.email = self.findChild(QLineEdit, 'Email_Field')
+        self.contact = self.findChild(QLineEdit, 'Contact_Field')
+        self.username = self.findChild(QLineEdit, 'Username_Field')
+        self.password = self.findChild(QLineEdit, 'Password_Field')
+        self.con_password = self.findChild(QLineEdit, 'Confirm_Pass_Field')
 
-        self.register_btn = self.findChild(QtWidgets.QPushButton, 'Register_Button')
-        self.clear_btn = self.findChild(QtWidgets.QPushButton, 'Clear_Button')
-        self.exit_btn = self.findChild(QtWidgets.QPushButton, 'Exit_Button')
+        self.register_btn = self.findChild(QPushButton, 'Register_Button')
+        self.clear_btn = self.findChild(QPushButton, 'Clear_Button')
+        self.exit_btn = self.findChild(QPushButton, 'Exit_Button')
 
         self.register_btn.clicked.connect(self.validation)
         self.clear_btn.clicked.connect(self.clear_fields)
@@ -73,3 +77,12 @@ class Register_Window(QtWidgets.QMainWindow):
         self.window_stack.setWindowTitle("Login")  # Setting Title of Stack to Home
         self.window_stack.resize(640, 240)
         self.window_stack.setCurrentIndex(0)  # Adding Login Window to Window Stack
+
+
+if __name__ == "__main__":
+    app = QApplication(sys.argv)
+
+    signup_window = SignUp_Window()
+    signup_window.show()
+
+    sys.exit(app.exec_())
