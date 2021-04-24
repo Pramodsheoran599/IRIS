@@ -5,9 +5,9 @@ from PyQt5.QtGui import QColor
 from PyQt5.QtWidgets import *
 from qt_material import apply_stylesheet
 
-from Home import Home_Window
-from Login import Login_Window
-from SignUp import SignUp_Window
+from FrontEnd.Home import Home_Window
+from FrontEnd.Login import Login_Window
+from FrontEnd.SignUp import SignUp_Window
 
 counter = 0                                                                                 # Global Counter for Progress Bar percentage
 

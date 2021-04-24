@@ -1,3 +1,4 @@
+# Importing Libraries
 import cv2
 import os
 import sys
@@ -7,8 +8,10 @@ from PyQt5.QtCore import QTimer
 from PyQt5.QtGui import QImage, QPixmap
 from PyQt5.QtWidgets import QApplication, QMainWindow, QPushButton, QLabel
 
-import Alerts_and_Messages
+from Alerts_and_Messages import Alert
 from BackEnd.Firebase_Operations import generate_log
+
+####################################################################################################################################################
 
 
 class Home_Window(QMainWindow):
@@ -95,7 +98,7 @@ class Home_Window(QMainWindow):
         self.window_stack.resize(640, 240)
 
     def alert(self):
-        self.alert_window = Alerts_and_Messages.Alert()
+        self.alert_window = Alert()
         self.alert_window.show()
 
 
