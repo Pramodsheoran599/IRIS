@@ -5,7 +5,7 @@ from PyQt5 import uic
 from PyQt5.QtWidgets import QApplication, QMainWindow, QLineEdit, QPushButton
 
 from BackEnd.Firebase_Operations import user_exists, get_data, generate_log
-from SignUp import message_box
+from Alerts_and_Messages import Message
 
 
 class Login_Window(QMainWindow):
@@ -33,7 +33,7 @@ class Login_Window(QMainWindow):
         password = self.password_field.text()                                           # Extract Password form the Field
 
         if username == '' or password == '':                                            # If Either of Fields are Blank
-            message_box("Error", "Please Fill all the Details.")                            # Display Error Message
+            Message(self, "Error", "Please Fill all the Details.")                            # Display Error Message
 
         elif user_exists("Users", username):                                            # If username exists in the database
             if password == get_data(username, "Password"):                              # And Passwords Match as well
@@ -46,9 +46,9 @@ class Login_Window(QMainWindow):
                 self.window_stack.setWindowTitle("Home")                                    # Changing Title of Stack to Home
 
             else:                                                                       # If Password does not match in database
-                message_box("Error", "Invalid Password")
+                Message(self, "Error", "Invalid Password")
         else:                                                                           # If Username doesn't Exist in the Database
-            message_box("Error", "Username doesn't exist")
+            Message(self, "Error", "Username Does not Exist.")
 
     def register(self):
         """Change the Current Window to Register Window"""

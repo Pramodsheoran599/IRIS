@@ -5,15 +5,7 @@ from PyQt5 import uic, QtGui
 from PyQt5.QtWidgets import QMessageBox, QApplication, QMainWindow, QLineEdit, QPushButton
 
 from BackEnd.Firebase_Operations import push_user_to_database
-
-
-def message_box(code, message):
-    msg_box = QMessageBox()
-    msg_box.setWindowIcon((QtGui.QIcon(r'Ui Files\Images\Window_Icon.png')))
-    msg_box.setText(message)
-    msg_box.setWindowTitle("QMessageBox Example")
-    msg_box.setStandardButtons(QMessageBox.Ok)
-    msg_box.exec()
+from Alerts_and_Messages import Message
 
 
 class SignUp_Window(QMainWindow):
@@ -53,16 +45,16 @@ class SignUp_Window(QMainWindow):
         }
 
         if "" in new_user.values():
-            message_box("Error", "Please Fill All the Details")
+            Message(self, "Error", "Please Fill All the Details")
 
         elif self.password.text() == self.con_password.text():
             if push_user_to_database(new_user):
-                message_box("Success", "You Have Successfully Registered with the IRIS System.")
+                Message(self, "Success", "Successfully Registered")
             else:
-                message_box("Error", "You are Already Registered with the IRIS System.")
+                Message(self, "Error", "Username Already Registered")
 
         else:
-            message_box("Error", "Passwords Do not Match.")
+            Message(self, "Error", "Passwords Do not Match.")
 
     def clear_fields(self):
         self.first_name.clear()

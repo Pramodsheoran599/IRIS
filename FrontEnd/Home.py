@@ -11,8 +11,6 @@ from PyQt5.QtWidgets import QApplication, QMainWindow, QPushButton, QLabel
 from Alerts_and_Messages import Alert
 from BackEnd.Firebase_Operations import generate_log
 
-####################################################################################################################################################
-
 
 class Home_Window(QMainWindow):
 

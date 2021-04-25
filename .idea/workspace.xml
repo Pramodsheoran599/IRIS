@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e24ce801-9aa9-466b-aa1e-71d2f8778b08" name="Default Changelist" comment="Major Changes:&#10;1) Implementes a Splash Screen&#10;2) Implemented Alert Window&#10;&#10;Minor Changes:&#10;1) Cleaned up the code&#10;2) Better Comments(Still Need Work)">
+    <list default="true" id="e24ce801-9aa9-466b-aa1e-71d2f8778b08" name="Default Changelist" comment="Simple Changes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BackEnd/Firebase_Operations.py" beforeDir="false" afterPath="$PROJECT_DIR$/BackEnd/Firebase_Operations.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FrontEnd/Alerts_and_Messages.py" beforeDir="false" afterPath="$PROJECT_DIR$/FrontEnd/Alerts_and_Messages.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FrontEnd/Home.py" beforeDir="false" afterPath="$PROJECT_DIR$/FrontEnd/Home.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FrontEnd/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/FrontEnd/SplashScreen.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FrontEnd/Login.py" beforeDir="false" afterPath="$PROJECT_DIR$/FrontEnd/Login.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FrontEnd/SignUp.py" beforeDir="false" afterPath="$PROJECT_DIR$/FrontEnd/SignUp.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FrontEnd/Ui Files/Message_Box.ui" beforeDir="false" afterPath="$PROJECT_DIR$/FrontEnd/Ui Files/Message_Box.ui" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,33 +49,13 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\JiN\Desktop\IRIS\FrontEnd" />
       <recent name="C:\Users\JiN\Desktop\IRIS" />
       <recent name="C:\Users\JiN\Desktop\IRIS\BackEnd" />
     </key>
   </component>
   <component name="RunManager" selected="Python.SplashScreen (1)">
-    <configuration name="Firebase_Operations" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="IRIS" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/BackEnd" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/BackEnd/Firebase_Operations.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="Home" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="Alerts_and_Messages" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="IRIS" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -85,7 +67,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/FrontEnd/Home.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/FrontEnd/Alerts_and_Messages.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -107,6 +89,27 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/FrontEnd/Login.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="SignUp" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="IRIS" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/FrontEnd" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/FrontEnd/SignUp.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -221,19 +224,20 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Python.Home" />
-      <item itemvalue="Python.Firebase_Operations" />
+      <item itemvalue="Python.main" />
       <item itemvalue="Python.Login" />
       <item itemvalue="Python.SplashScreen" />
       <item itemvalue="Python.SplashScreen (1)" />
+      <item itemvalue="Python.Alerts_and_Messages" />
+      <item itemvalue="Python.SignUp" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Python.SplashScreen (1)" />
-        <item itemvalue="Python.SplashScreen" />
-        <item itemvalue="Python.main (1)" />
-        <item itemvalue="Python.Home" />
         <item itemvalue="Python.Login" />
+        <item itemvalue="Python.Alerts_and_Messages" />
+        <item itemvalue="Python.SignUp" />
+        <item itemvalue="Python.SplashScreen" />
       </list>
     </recent_temporary>
   </component>
@@ -288,7 +292,14 @@
       <option name="project" value="LOCAL" />
       <updated>1619281373646</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Simple Changes">
+      <created>1619282060707</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1619282060707</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -310,6 +321,7 @@
     <MESSAGE value="1) Implemented PoseEstimation Using MediaPipe&#10;2) Implemented star-skeleton (Find Local Maxima)" />
     <MESSAGE value="Updated requirements.txt" />
     <MESSAGE value="Major Changes:&#10;1) Implementes a Splash Screen&#10;2) Implemented Alert Window&#10;&#10;Minor Changes:&#10;1) Cleaned up the code&#10;2) Better Comments(Still Need Work)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Major Changes:&#10;1) Implementes a Splash Screen&#10;2) Implemented Alert Window&#10;&#10;Minor Changes:&#10;1) Cleaned up the code&#10;2) Better Comments(Still Need Work)" />
+    <MESSAGE value="Simple Changes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Simple Changes" />
   </component>
 </project>
