@@ -8,7 +8,7 @@ from PyQt5.QtCore import QTimer
 from PyQt5.QtGui import QImage, QPixmap
 from PyQt5.QtWidgets import QApplication, QMainWindow, QPushButton, QLabel
 
-from Alerts_and_Messages import Alert
+from Alerts_and_Messages import Alert, Message
 from BackEnd.Firebase_Operations import generate_log
 
 
@@ -70,7 +70,8 @@ class Home_Window(QMainWindow):
 
     def record_live_feed(self, frame):
         if self.cap.isOpened() is False:
-            print("Unable to read camera feed")
+            Message(self, "Error", "Unable to read camera feed")                                        ###### NEED MORE WORK HERE
+
         else:
             frame_width = int(self.cap.get(3))
             frame_height = int(self.cap.get(4))
@@ -81,8 +82,8 @@ class Home_Window(QMainWindow):
                 if ret:
                     out.write(frame)
 
-                    # if self.rec_btn.clicked():
-                    #     print("ss")
+                    if self.rec_btn.clicked():
+                        self.rec_btn.setText("Stop Recording")
                     if cv2.waitKey(1) & 0xFF == ord('q'):
                         break
 

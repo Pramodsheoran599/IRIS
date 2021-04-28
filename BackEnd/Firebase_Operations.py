@@ -46,4 +46,3 @@ def generate_log(username, action):
     }
 
     db.collection("Logs").document(document_id).set(log)
-

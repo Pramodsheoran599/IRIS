@@ -35,15 +35,14 @@ while cap.isOpened():
             continue                                                                                    # Skip the Contour
 
         persons.append((x, y, w, h))                                                                # Add the Coordinate to Person List
-
+        roi = frame[y:y + h, x:x + w]
+        detection = detector.findPose(roi)
         cv2.rectangle(frame, (x, y), (x + w, y + h), (0, 255, 0), 2)                                # Draw the Bounding Box
 
-    for person in persons:                                                                          # For each person
-        x, y, w, h = person                                                                             # Coordinates Unpacking
-        centroid = ((x + w//2), (y + h//2))                                                             # Centroid
-        roi = frame[y:y+h, x:x+w]
-        detection = detector.findPose(roi)
-        cv2.circle(frame, centroid, 2, (0, 0, 255), 2)                                                  # Draw Centroid
+    # for person in persons:                                                                          # For each person
+    #     x, y, w, h = person                                                                             # Coordinates Unpacking
+    #     centroid = ((x + w//2), (y + h//2))                                                             # Centroid
+    #     cv2.circle(frame, centroid, 2, (0, 0, 255), 2)                                                  # Draw Centroid
 
     cv2.imshow("Frame", frame)                                                                      # Display Orignal Frame
     cv2.imshow("Dilated", dilated)                                                                  # Display Dilated Frame

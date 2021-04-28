@@ -1,8 +1,8 @@
 # Importing Libraries
 import sys
 
-from PyQt5 import uic, QtGui
-from PyQt5.QtWidgets import QMessageBox, QApplication, QMainWindow, QLineEdit, QPushButton
+from PyQt5 import uic
+from PyQt5.QtWidgets import QApplication, QMainWindow, QLineEdit, QPushButton
 
 from BackEnd.Firebase_Operations import push_user_to_database
 from Alerts_and_Messages import Message

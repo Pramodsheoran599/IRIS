@@ -2,12 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e24ce801-9aa9-466b-aa1e-71d2f8778b08" name="Default Changelist" comment="Simple Changes">
+      <change afterPath="$PROJECT_DIR$/Test Code/Yolo/darknet.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FrontEnd/Alerts_and_Messages.py" beforeDir="false" afterPath="$PROJECT_DIR$/FrontEnd/Alerts_and_Messages.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BackEnd/Firebase_Operations.py" beforeDir="false" afterPath="$PROJECT_DIR$/BackEnd/Firebase_Operations.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FrontEnd/Home.py" beforeDir="false" afterPath="$PROJECT_DIR$/FrontEnd/Home.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FrontEnd/Login.py" beforeDir="false" afterPath="$PROJECT_DIR$/FrontEnd/Login.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FrontEnd/SignUp.py" beforeDir="false" afterPath="$PROJECT_DIR$/FrontEnd/SignUp.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FrontEnd/Ui Files/Message_Box.ui" beforeDir="false" afterPath="$PROJECT_DIR$/FrontEnd/Ui Files/Message_Box.ui" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test Code/Detection.py" beforeDir="false" afterPath="$PROJECT_DIR$/Test Code/Detection.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test Code/star_skeleton.py" beforeDir="false" afterPath="$PROJECT_DIR$/Test Code/star_skeleton.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,29 +34,38 @@
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
   </component>
+  <component name="ProblemsViewState">
+    <option name="selectedIndex" value="2" />
+  </component>
   <component name="ProjectId" id="1qstY5AwjI9oYRz2dSFNX7R6b0z" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="settings.editor.selected.configurable" value="terminal" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/Test Code/Images" />
+    <property name="restartRequiresConfirmation" value="false" />
+    <property name="settings.editor.selected.configurable" value="preferences.fileTypes" />
   </component>
   <component name="ReaderModeSettings">
     <option name="showLigatures" value="false" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\JiN\Desktop\IRIS\Test Code\Images" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\JiN\Desktop\IRIS\Test Code\Yolo" />
       <recent name="C:\Users\JiN\Desktop\IRIS\FrontEnd" />
       <recent name="C:\Users\JiN\Desktop\IRIS" />
       <recent name="C:\Users\JiN\Desktop\IRIS\BackEnd" />
     </key>
   </component>
   <component name="RunManager" selected="Python.SplashScreen (1)">
-    <configuration name="Alerts_and_Messages" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="Detection" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="IRIS" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -63,11 +73,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/FrontEnd" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Test Code" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/FrontEnd/Alerts_and_Messages.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Test Code/Detection.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -76,7 +86,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="Login" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="Firebase_Operations" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="IRIS" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -84,11 +94,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/FrontEnd" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/BackEnd" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/FrontEnd/Login.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/BackEnd/Firebase_Operations.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -139,7 +149,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="SplashScreen" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="star_skeleton" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="IRIS" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -147,74 +157,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/FrontEnd" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Test Code" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="C:\Users\JiN\Desktop\IRIS\FrontEnd\SplashScreen.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="SplashScreen" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="IRIS" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/FrontEnd" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="C:\Users\JiN\Desktop\IRIS\FrontEnd\SplashScreen.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="IRIS" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/FrontEnd" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="C:\Users\JiN\Desktop\IRIS\FrontEnd\main.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="IRIS" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="C:\Users\JiN\Desktop\IRIS\FrontEnd\main.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Test Code/star_skeleton.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -224,20 +171,19 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Python.main" />
-      <item itemvalue="Python.Login" />
-      <item itemvalue="Python.SplashScreen" />
-      <item itemvalue="Python.SplashScreen (1)" />
-      <item itemvalue="Python.Alerts_and_Messages" />
+      <item itemvalue="Python.Detection" />
+      <item itemvalue="Python.Firebase_Operations" />
       <item itemvalue="Python.SignUp" />
+      <item itemvalue="Python.SplashScreen (1)" />
+      <item itemvalue="Python.star_skeleton" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Python.SplashScreen (1)" />
-        <item itemvalue="Python.Login" />
-        <item itemvalue="Python.Alerts_and_Messages" />
+        <item itemvalue="Python.Detection" />
+        <item itemvalue="Python.star_skeleton" />
+        <item itemvalue="Python.Firebase_Operations" />
         <item itemvalue="Python.SignUp" />
-        <item itemvalue="Python.SplashScreen" />
       </list>
     </recent_temporary>
   </component>
@@ -299,7 +245,14 @@
       <option name="project" value="LOCAL" />
       <updated>1619282060707</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Simple Changes">
+      <created>1619330919445</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1619330919445</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
