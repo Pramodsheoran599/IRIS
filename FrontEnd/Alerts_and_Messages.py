@@ -1,33 +1,61 @@
 # Importing Libraries
-import sys
-
 from PyQt5 import uic
-from PyQt5.QtGui import QPixmap, QIcon
-from PyQt5.QtWidgets import QApplication, QMainWindow, QLabel, QPushButton
-from qt_material import apply_stylesheet
+from PyQt5.QtGui import QPixmap
+from PyQt5.QtWidgets import QMainWindow, QLabel, QPushButton, QPlainTextEdit, QRadioButton
+
+from BackEnd.Firebase_Operations import generate_alert
 
 
 class Alert(QMainWindow):
-    def __init__(self):
+    def __init__(self, username):
         super(Alert, self).__init__()
 
-        uic.loadUi(r"Ui Files\Alert_Window.ui", self)
-        # Implement Alert Class
+        uic.loadUi(r"Ui Files\Alert_Window.ui", self)                                           # Load Alert_Window UI File
+
+        self.username = username                                                                # Username of currently Signed-in User
+        self.screenshot = QPixmap("../Recordings/Image Evidence/screenshot.jpg")                # Read Evidence Screenshot
+        self.comment_section = self.findChild(QPlainTextEdit, "Comment_Section")                # Comment Section
+        self.evidence = self.findChild(QLabel, "Screenshot")                                    # Evidence Display Area
+
+        self.sus_radio_btn = self.findChild(QRadioButton, "Suspicious_Radio_Button")            # Suspicious Radio Button
+        self.false_radio_btn = self.findChild(QRadioButton, "False_Alarm_Radio_Button")         # False Alarm Radio Button
+        self.submit_btn = self.findChild(QPushButton, "Submit_Button")                          # Submit Button
+
+        self.evidence.setPixmap(self.screenshot)                                                # Display Screenshot in Evidence Section
+
+        self.submit_btn.setShortcut('Return')                                                   # Shortcut Key for Submit Button
+        self.submit_btn.clicked.connect(self.create_alert)                                      # On Click Generate Alert
+
+    def create_alert(self):
+        """Create an Alert and Store it in the Database"""
+
+        if self.sus_radio_btn.isChecked():
+            detection = "Suspicious Activity"
+
+        else:
+            detection = "False Alarm"
+
+        comment = self.comment_section.toPlainText()                                            # Get Comment from Comment Section
+        generate_alert(self.username, detection, comment)                                       # Push Alert to Cloud
+
+        self.close()
 
 
 class Message_Box(QMainWindow):
     def __init__(self):
         super(Message_Box, self).__init__()
 
-        uic.loadUi(r"Ui Files\Message_Box.ui", self)
+        uic.loadUi(r"Ui Files\Message_Box.ui", self)                                            # Load Message Box UI File
 
-        self.message_icon = self.findChild(QLabel, "Message_Icon")
-        self.message_label = self.findChild(QLabel, "Message_Label")
-        self.ok_btn = self.findChild(QPushButton, "OK_Button")
+        self.message_icon = self.findChild(QLabel, "Message_Icon")                              # Message Icon
+        self.message_label = self.findChild(QLabel, "Message_Label")                            # Message Label
+        self.ok_btn = self.findChild(QPushButton, "OK_Button")                                  # OK Button
 
-        self.ok_btn.clicked.connect(lambda: self.close())
+        self.ok_btn.setShortcut('Return')                                                       # Shortcut Key for OK Button
+        self.ok_btn.clicked.connect(lambda: self.close())                                       # Close Window on OK button click
 
-    def display(self, code, message):
+    def set_up(self, code, message):
+        """Set-Up Message Icon and the Message"""
 
         if code == "Success":
             pixmap = QPixmap(r"Ui Files\Images\Success_Icon.png")
@@ -40,17 +68,8 @@ class Message_Box(QMainWindow):
 
 
 def Message(self, code, message):
+    """Create Message Box Object and Display it"""
+    print("ss")
     self.message_box = Message_Box()
     self.message_box.display(code, message)
     self.message_box.show()
-
-
-if __name__ == "__main__":
-    app = QApplication(sys.argv)  # Main Application
-    app.setWindowIcon(QIcon(r"Ui Files\Images\Window_Icon"))  # Setting Application Icon
-    apply_stylesheet(app, theme='dark_amber.xml')  # Setting Theme of Application
-
-    alert_window = Alert()
-    alert_window.show()
-
-    sys.exit(app.exec_())

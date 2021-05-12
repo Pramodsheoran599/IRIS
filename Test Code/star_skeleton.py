@@ -1,12 +1,12 @@
 # Importing Libraries
-import cv2 as cv
-import numpy as np
-import imutils
 import math
+
+import numpy as np
+import cv2 as cv
+import imutils
 from matplotlib import pyplot as plt
 from scipy.signal import savgol_filter
 
-__all__ = [cv, np, imutils, math, plt, savgol_filter]
 
 # Global Variables
 N = 0                                                                   # For Number of Contour Points
@@ -35,15 +35,7 @@ class StarSkeleton:
         gray = cv.cvtColor(original_img, cv.COLOR_BGR2GRAY)
         gray = cv.GaussianBlur(gray, (3, 3), 0)
 
-        _, binary = cv.threshold(gray, 225, 255, cv.THRESH_BINARY_INV)
-
-        # t = filters.threshold_otsu(gray)
-        # mask = gray < t
         edged = self.auto_canny(gray)
-
-        contours = cv.findContours(edged, cv.RETR_EXTERNAL, cv.CHAIN_APPROX_SIMPLE)
-        cnts = imutils.grab_contours(contours)
-        contour_points = max(cnts, key=cv.contourArea)
 
         dilated = cv.dilate(edged, kernel)
         contours, _ = cv.findContours(dilated, cv.RETR_TREE, cv.CHAIN_APPROX_NONE)
@@ -115,11 +107,11 @@ class StarSkeleton:
             d = int(math.sqrt(((x_co_ordinates[i] - Xc) ** 2) + (y_co_ordinates[i] - Yc) ** 2))
             di.append(d)
 
-        x = np.array(range(N))                                              # Converting into Numpy Array
+        x = np.array(range(N))                                                  # Converting into Numpy Array
         di = np.array(di)
 
-        x = savgol_filter(x, 111, 3)                                        # Smoothing the Curve
-        y = savgol_filter(di, 111, 3)                                       # Smoothing the Curve
+        x = savgol_filter(x, 111, 3)                                            # Smoothing the Curve
+        y = savgol_filter(di, 111, 3)                                           # Smoothing the Curve
 
         #########################################################################################
         ## Formula for Peaks: A graph has a peak if dy/dx changes from +ve to -ve and Vice-Versa
@@ -140,9 +132,10 @@ class StarSkeleton:
             features.append(distance)
             local_maxima.pop(distance)
 
-        plot_graph(x, y,'Extreme Points', 'Border Points i', 'di')    # Plotting the Graph of Points wrt their Distances
+        plot_graph(x, y,'Extreme Points', 'Border Points i', 'di')         # Plotting the Graph of Points wrt their Distances
 
         return features                                                    # Returning Feature List
+
 
 path = r"Images\women.jpg"
 skeleton = StarSkeleton(path)

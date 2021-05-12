@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>937</width>
+    <width>913</width>
     <height>439</height>
    </rect>
   </property>
@@ -21,7 +21,7 @@
    <widget class="QLabel" name="Heading_Label">
     <property name="geometry">
      <rect>
-      <x>300</x>
+      <x>290</x>
       <y>10</y>
       <width>351</width>
       <height>51</height>
@@ -40,12 +40,12 @@
      <set>Qt::AlignCenter</set>
     </property>
    </widget>
-   <widget class="QLabel" name="video">
+   <widget class="QLabel" name="Screenshot">
     <property name="geometry">
      <rect>
       <x>40</x>
       <y>80</y>
-      <width>481</width>
+      <width>451</width>
       <height>331</height>
      </rect>
     </property>
@@ -57,11 +57,14 @@
     <property name="text">
      <string/>
     </property>
+    <property name="scaledContents">
+     <bool>true</bool>
+    </property>
    </widget>
    <widget class="QLabel" name="Logo">
     <property name="geometry">
      <rect>
-      <x>750</x>
+      <x>720</x>
       <y>50</y>
       <width>151</width>
       <height>141</height>
@@ -83,7 +86,7 @@
    <widget class="QPushButton" name="Submit_Button">
     <property name="geometry">
      <rect>
-      <x>620</x>
+      <x>590</x>
       <y>360</y>
       <width>161</width>
       <height>51</height>
@@ -108,23 +111,10 @@
      <bool>false</bool>
     </property>
    </widget>
-   <widget class="QTextBrowser" name="Comment_Section">
-    <property name="geometry">
-     <rect>
-      <x>560</x>
-      <y>230</y>
-      <width>271</width>
-      <height>91</height>
-     </rect>
-    </property>
-    <property name="placeholderText">
-     <string>Enter Comments if any.</string>
-    </property>
-   </widget>
    <widget class="QWidget" name="verticalLayoutWidget">
     <property name="geometry">
      <rect>
-      <x>560</x>
+      <x>530</x>
       <y>110</y>
       <width>151</width>
       <height>91</height>
@@ -142,6 +132,9 @@
        <property name="text">
         <string>Suspicious</string>
        </property>
+       <property name="checked">
+        <bool>true</bool>
+       </property>
       </widget>
      </item>
      <item>
@@ -158,6 +151,19 @@
       </widget>
      </item>
     </layout>
+   </widget>
+   <widget class="QPlainTextEdit" name="Comment_Section">
+    <property name="geometry">
+     <rect>
+      <x>530</x>
+      <y>240</y>
+      <width>271</width>
+      <height>91</height>
+     </rect>
+    </property>
+    <property name="placeholderText">
+     <string>Enter Comments if any.</string>
+    </property>
    </widget>
   </widget>
  </widget>

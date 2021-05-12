@@ -1,8 +1,9 @@
 PyQt5
 qt-material
-opencv-contrib-python
 numpy
+pyrebase
 firebase-admin
+opencv-contrib-python
 av
 tqdm
 mediapipe

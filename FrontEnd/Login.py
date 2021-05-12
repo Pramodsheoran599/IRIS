@@ -4,7 +4,7 @@ import sys
 from PyQt5 import uic
 from PyQt5.QtWidgets import QApplication, QMainWindow, QLineEdit, QPushButton
 
-from BackEnd.Firebase_Operations import user_exists, get_data, generate_log
+from BackEnd.Firebase_Operations import user_exists, get_user_data, generate_log
 from Alerts_and_Messages import Message
 
 
@@ -22,6 +22,7 @@ class Login_Window(QMainWindow):
         self.password_field = self.findChild(QLineEdit, 'Password_Field')               # Password Field
 
         login_button = self.findChild(QPushButton, 'Login_Button')                      # Login Button
+        login_button.setShortcut('Return')                                              # Shortcut Key for Login Button
         login_button.clicked.connect(self.login_validation)                             # Call login_validation on Button Press
 
         sign_up_btn = self.findChild(QPushButton, 'SignUp_Button')                      # Register Button
@@ -35,15 +36,15 @@ class Login_Window(QMainWindow):
         if username == '' or password == '':                                            # If Either of Fields are Blank
             Message(self, "Error", "Please Fill all the Details.")                            # Display Error Message
 
-        elif user_exists("Users", username):                                            # If username exists in the database
-            if password == get_data(username, "Password"):                              # And Passwords Match as well
-                generate_log(username, "Sign-in")                                           # Create a Log in database that a User has signed in
+        elif user_exists(username):                                                     # If username exists in the database
+            if password == get_user_data(username, "Password"):                               # And Passwords Match as well
+                generate_log(username, "Sign-in")                                             # Create a Log in database that a User has signed in
 
-                self.home_window.username = username                                        # Passing Username to Home Window
-                self.home_window.name_tag.setText(f"Welcome {username}")                    # Setting Name Tag of Home Window
-                self.window_stack.setCurrentIndex(1)                                        # Changing Window to Home Window
-                self.window_stack.resize(950, 550)                                          # Dimensions of Home Window
-                self.window_stack.setWindowTitle("Home")                                    # Changing Title of Stack to Home
+                self.home_window.username = username                                          # Passing Username to Home Window
+                self.home_window.name_tag.setText(f"Welcome {username}")                      # Setting Name Tag of Home Window
+                self.window_stack.setCurrentIndex(1)                                          # Changing Window to Home Window
+                self.window_stack.resize(950, 550)                                            # Dimensions of Home Window
+                self.window_stack.setWindowTitle("Home")                                      # Changing Title of Stack to Home
 
             else:                                                                       # If Password does not match in database
                 Message(self, "Error", "Invalid Password")
@@ -57,6 +58,7 @@ class Login_Window(QMainWindow):
         self.window_stack.resize(720, 460)                                              # Dimensions of Home Window
 
 
+# Testing Code
 if __name__ == "__main__":
     app = QApplication(sys.argv)
 

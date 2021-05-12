@@ -1,6 +1,7 @@
 import cv2
 import numpy as np
 import PoseEstimation as PE
+from star_skeleton import StarSkeleton
 
 cap = cv2.VideoCapture('Videos\\pedestrians.avi')                                                  # Loading the Video
 fgbg = cv2.createBackgroundSubtractorKNN()                                                         # Background Subtractor
@@ -36,7 +37,8 @@ while cap.isOpened():
 
         persons.append((x, y, w, h))                                                                # Add the Coordinate to Person List
         roi = frame[y:y + h, x:x + w]
-        detection = detector.findPose(roi)
+        star = StarSkeleton(roi)
+        # detection = detector.findPose(roi)
         cv2.rectangle(frame, (x, y), (x + w, y + h), (0, 255, 0), 2)                                # Draw the Bounding Box
 
     # for person in persons:                                                                          # For each person

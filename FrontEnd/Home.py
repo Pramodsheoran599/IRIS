@@ -70,6 +70,7 @@ class Home_Window(QMainWindow):
 
     def record_live_feed(self, frame):
         if self.cap.isOpened() is False:
+            self.rec_btn.Toggle()
             Message(self, "Error", "Unable to read camera feed")                                        ###### NEED MORE WORK HERE
 
         else:
@@ -97,8 +98,17 @@ class Home_Window(QMainWindow):
         self.window_stack.resize(640, 240)
 
     def alert(self):
-        self.alert_window = Alert()
-        self.alert_window.show()
+
+        if self.cap.isOpened() is False:
+            Message(self, "Error", "Unable to read camera feed")
+
+        else:
+            ret, screenshot = self.cap.read()
+            screenshot = cv2.flip(screenshot, 1)
+            cv2.imwrite("../Recordings/Image Evidence/screenshot.jpg", screenshot)
+
+            self.alert_window = Alert(self.username)
+            self.alert_window.show()
 
 
 if __name__ == "__main__":
