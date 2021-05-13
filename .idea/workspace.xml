@@ -1,17 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e24ce801-9aa9-466b-aa1e-71d2f8778b08" name="Default Changelist" comment="1) Implemented Star Skeleton&#10;Prorper Masking is needed">
-      <change afterPath="$PROJECT_DIR$/BackEnd/pic.jpeg" afterDir="false" />
+    <list default="true" id="e24ce801-9aa9-466b-aa1e-71d2f8778b08" name="Default Changelist" comment="1) Implemented Alert Class&#10;2) Implemented generate_alert function&#10;3) Cleaned up COde">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BackEnd/Firebase_Operations.py" beforeDir="false" afterPath="$PROJECT_DIR$/BackEnd/Firebase_Operations.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FrontEnd/Alerts_and_Messages.py" beforeDir="false" afterPath="$PROJECT_DIR$/FrontEnd/Alerts_and_Messages.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FrontEnd/Home.py" beforeDir="false" afterPath="$PROJECT_DIR$/FrontEnd/Home.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FrontEnd/Login.py" beforeDir="false" afterPath="$PROJECT_DIR$/FrontEnd/Login.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FrontEnd/Ui Files/Alert_Window.ui" beforeDir="false" afterPath="$PROJECT_DIR$/FrontEnd/Ui Files/Alert_Window.ui" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Code/Detection.py" beforeDir="false" afterPath="$PROJECT_DIR$/Test Code/Detection.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Code/star_skeleton.py" beforeDir="false" afterPath="$PROJECT_DIR$/Test Code/star_skeleton.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FrontEnd/Ui Files/Message_Box.ui" beforeDir="false" afterPath="$PROJECT_DIR$/FrontEnd/Ui Files/Message_Box.ui" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,28 +63,7 @@
       <recent name="C:\Users\JiN\Desktop\IRIS" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.Home">
-    <configuration name="Alerts_and_Messages" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="IRIS" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/FrontEnd" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/FrontEnd/Alerts_and_Messages.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
+  <component name="RunManager" selected="Python.SplashScreen">
     <configuration name="Firebase_Operations" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="IRIS" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -174,19 +149,17 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Python.Alerts_and_Messages" />
       <item itemvalue="Python.Firebase_Operations" />
-      <item itemvalue="Python.SplashScreen" />
       <item itemvalue="Python.Home" />
       <item itemvalue="Python.Login" />
+      <item itemvalue="Python.SplashScreen" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.Home" />
         <item itemvalue="Python.SplashScreen" />
+        <item itemvalue="Python.Home" />
         <item itemvalue="Python.Firebase_Operations" />
         <item itemvalue="Python.Login" />
-        <item itemvalue="Python.Alerts_and_Messages" />
       </list>
     </recent_temporary>
   </component>
@@ -262,7 +235,14 @@
       <option name="project" value="LOCAL" />
       <updated>1619604495310</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="1) Implemented Alert Class&#10;2) Implemented generate_alert function&#10;3) Cleaned up COde">
+      <created>1620845315429</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1620845315429</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -286,6 +266,7 @@
     <MESSAGE value="Major Changes:&#10;1) Implementes a Splash Screen&#10;2) Implemented Alert Window&#10;&#10;Minor Changes:&#10;1) Cleaned up the code&#10;2) Better Comments(Still Need Work)" />
     <MESSAGE value="Simple Changes" />
     <MESSAGE value="1) Implemented Star Skeleton&#10;Prorper Masking is needed" />
-    <option name="LAST_COMMIT_MESSAGE" value="1) Implemented Star Skeleton&#10;Prorper Masking is needed" />
+    <MESSAGE value="1) Implemented Alert Class&#10;2) Implemented generate_alert function&#10;3) Cleaned up COde" />
+    <option name="LAST_COMMIT_MESSAGE" value="1) Implemented Alert Class&#10;2) Implemented generate_alert function&#10;3) Cleaned up COde" />
   </component>
 </project>

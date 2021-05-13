@@ -39,7 +39,7 @@ def push_user_to_database(new_user):
 
     document_id = new_user["Username"]                                              # Each Document Id is set to respective Username
 
-    if user_exists("Users", document_id):                                           # If User Already Registered
+    if user_exists("Users"):                                                        # If User Already Registered
         return 0                                                                         #  return 0 to notify User Already Exists
 
     else:
@@ -57,13 +57,12 @@ def get_user_data(document_id, field):
 def generate_log(username, action):
     """Generate a Log in Database for a User Action"""
 
-    timestamp = datetime.now()                                                     # Time Stamp of the log
-    document_id = timestamp.strftime("%d-%m-%Y %H:%M:%S")                          # Time Stamp used as Doc-ID
+    document_id = datetime.now().strftime("%d-%m-%Y %H:%M:%S")                     # Time Stamp used as Doc-ID
 
     log = {                                                                        # Log Dictionary
         "Username": username,
         "Action": action,
-        "Time Stamp": timestamp
+        "Time Stamp": firestore.SERVER_TIMESTAMP                                   # Server Timestamp
     }
 
     db.collection("Logs").document(document_id).set(log)                           # Push Log to the Database
@@ -72,19 +71,18 @@ def generate_log(username, action):
 def generate_alert(username, detection_type, comment):
     """Generate an Alert and Store its Details in Database"""
 
-    timestamp = datetime.now()                                                     # Time Stamp of the Alert
-    document_id = timestamp.strftime("%d-%m-%Y %H:%M:%S")                          # Time Stamp used as Doc-ID
+    document_id = datetime.now().strftime("%d-%m-%Y %H:%M:%S")                          # Time Stamp used as Doc-ID
 
     # Storing Evidence based on the Detection_type and then getting its url
     storage.child(detection_type).child(document_id).put("../Recordings/Image Evidence/screenshot.jpg")
     url = storage.child(detection_type).child(document_id).get_url(None)
 
-    alert = {                                                                      # Alert Details
+    alert = {                                                                           # Alert Details
         "Username": username,
         "Detection Type": detection_type,
         "Evidence_Url": url,
         "Comment": comment if comment else None,
-        "Time Stamp": timestamp
+        "Time Stamp": firestore.SERVER_TIMESTAMP                                        # Server Timestamp
     }
 
     db.collection("Alerts").document(document_id).set(alert)

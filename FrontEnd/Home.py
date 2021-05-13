@@ -99,7 +99,7 @@ class Home_Window(QMainWindow):
 
     def alert(self):
 
-        if self.cap.isOpened() is False:
+        if self.cap is None or self.cap.isOpened() is False:
             Message(self, "Error", "Unable to read camera feed")
 
         else:

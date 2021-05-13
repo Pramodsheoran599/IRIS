@@ -1,7 +1,8 @@
 # Importing Libraries
 from PyQt5 import uic
+from PyQt5.QtCore import QRect, QPropertyAnimation
 from PyQt5.QtGui import QPixmap
-from PyQt5.QtWidgets import QMainWindow, QLabel, QPushButton, QPlainTextEdit, QRadioButton
+from PyQt5.QtWidgets import QMainWindow, QLabel, QPushButton, QPlainTextEdit, QRadioButton, qApp
 
 from BackEnd.Firebase_Operations import generate_alert
 
@@ -35,9 +36,19 @@ class Alert(QMainWindow):
         else:
             detection = "False Alarm"
 
-        comment = self.comment_section.toPlainText()                                            # Get Comment from Comment Section
-        generate_alert(self.username, detection, comment)                                       # Push Alert to Cloud
+        comment = self.comment_section.toPlainText()                    # Get Comment from Comment Section
 
+        self.anim = QPropertyAnimation(self.submit_btn, b"geometry")
+        self.anim.setDuration(200)
+        self.anim.setStartValue(QRect(590, 360, 161, 51))
+        self.anim.setEndValue(QRect(540, 360, 261, 51))
+        self.anim.start()
+        self.submit_btn.setText("Uploading Evidence...")                # Setting Button Text
+        qApp.processEvents()                                            # Forcing GUI update to display above text before generate alert execution
+
+        generate_alert(self.username, detection, comment)               # Push Alert to Cloud
+
+        Message(self, "Success", "Evidence Uploaded")
         self.close()
 
 
@@ -69,7 +80,7 @@ class Message_Box(QMainWindow):
 
 def Message(self, code, message):
     """Create Message Box Object and Display it"""
-    print("ss")
+
     self.message_box = Message_Box()
-    self.message_box.display(code, message)
+    self.message_box.set_up(code, message)
     self.message_box.show()
