@@ -1,4 +1,5 @@
 # Importing Libraries
+
 from PyQt5 import uic
 from PyQt5.QtCore import QRect, QPropertyAnimation
 from PyQt5.QtGui import QPixmap
@@ -27,6 +28,7 @@ class Alert(QMainWindow):
         self.submit_btn.setShortcut('Return')                                                   # Shortcut Key for Submit Button
         self.submit_btn.clicked.connect(self.create_alert)                                      # On Click Generate Alert
 
+
     def create_alert(self):
         """Create an Alert and Store it in the Database"""
 
@@ -39,7 +41,7 @@ class Alert(QMainWindow):
         comment = self.comment_section.toPlainText()                    # Get Comment from Comment Section
 
         self.anim = QPropertyAnimation(self.submit_btn, b"geometry")
-        self.anim.setDuration(200)
+        self.anim.setDuration(5)
         self.anim.setStartValue(QRect(590, 360, 161, 51))
         self.anim.setEndValue(QRect(540, 360, 261, 51))
         self.anim.start()

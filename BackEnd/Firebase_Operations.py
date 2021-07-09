@@ -1,5 +1,7 @@
 # Importing Libraries
 from datetime import datetime
+import smtplib
+from email.message import EmailMessage
 
 import pyrebase
 import firebase_admin
@@ -39,12 +41,12 @@ def push_user_to_database(new_user):
 
     document_id = new_user["Username"]                                              # Each Document Id is set to respective Username
 
-    if user_exists("Users"):                                                        # If User Already Registered
+    if user_exists(document_id):                                                    # If User Already Registered
         return 0                                                                         #  return 0 to notify User Already Exists
 
     else:
         db.collection("Users").document(document_id).set(new_user)                  # Add user to the Database
-        return 1                                                                         # Return 1 to notify User Registration Done
+        return 1                                                                        # Return 1 to notify User Registration Done
 
 
 def get_user_data(document_id, field):
@@ -71,18 +73,36 @@ def generate_log(username, action):
 def generate_alert(username, detection_type, comment):
     """Generate an Alert and Store its Details in Database"""
 
-    document_id = datetime.now().strftime("%d-%m-%Y %H:%M:%S")                          # Time Stamp used as Doc-ID
+    document_id = datetime.now().strftime("%d-%m-%Y %H:%M:%S")                     # Time Stamp used as Doc-ID
 
     # Storing Evidence based on the Detection_type and then getting its url
     storage.child(detection_type).child(document_id).put("../Recordings/Image Evidence/screenshot.jpg")
     url = storage.child(detection_type).child(document_id).get_url(None)
 
-    alert = {                                                                           # Alert Details
+    send_notification(url)
+
+    alert = {                                                                      # Alert Details
         "Username": username,
         "Detection Type": detection_type,
         "Evidence_Url": url,
         "Comment": comment if comment else None,
-        "Time Stamp": firestore.SERVER_TIMESTAMP                                        # Server Timestamp
+        "Time Stamp": firestore.SERVER_TIMESTAMP                                   # Server Timestamp
     }
 
     db.collection("Alerts").document(document_id).set(alert)
+
+
+def send_notification(url):
+
+    msg = EmailMessage()
+    msg.set_content(f"""Suspicious Activity Detected By the System \n link: {url}""")
+
+    msg['Subject'] = '!!!---IRIS SYSTEM ALERT---!!!'
+    msg['From'] = "pramodsheoran599@gmail.com"
+    msg['To'] = "pramodsheoran599@gmail.com"
+
+    # Send the message via our own SMTP server.
+    server = smtplib.SMTP_SSL('smtp.gmail.com', 465)
+    server.login("pramodsheoran599@gmail.com", "Pramod@7726")
+    server.send_message(msg)
+    server.quit()

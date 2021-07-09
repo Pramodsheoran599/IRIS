@@ -2,14 +2,29 @@
 import cv2
 import os
 import sys
+import numpy as np
+from collections import deque
 
+from tensorflow import keras
 from PyQt5 import uic
 from PyQt5.QtCore import QTimer
 from PyQt5.QtGui import QImage, QPixmap
 from PyQt5.QtWidgets import QApplication, QMainWindow, QPushButton, QLabel
+from qt_material import apply_stylesheet
 
 from Alerts_and_Messages import Alert, Message
 from BackEnd.Firebase_Operations import generate_log
+
+
+def run_once(f):
+    def wrapper(*args, **kwargs):
+
+            if not f.has_run:
+                f.has_run = True
+                return f(*args, **kwargs)
+
+    f.has_run = False
+    return wrapper
 
 
 class Home_Window(QMainWindow):
@@ -21,7 +36,12 @@ class Home_Window(QMainWindow):
         uic.loadUi(r'Ui Files\Monitoring_Window.ui', self)                                              # Load the .ui file
 
         self.window_stack = window_stack                                                                # Accepting Window Stack
-        self.cap = None                                                                                 # Initializing Capture Variable
+        self.cap = None                                                                 # Initializing Capture Variable
+
+        self.window_size = 25
+        self.model = keras.models.load_model('../ML/Models/Hockey_nofight_fight_Accuracy_98.9.h5')
+        self.classes_list = ["Normal", "Abnormal"]
+        self.predicted_labels_probabilities_deque = deque(maxlen=self.window_size)
 
         self.username = None                                                                            # Initializing Username
         self.name_tag = self.findChild(QLabel, 'Name_Label')                                   # Name Tag
@@ -43,9 +63,8 @@ class Home_Window(QMainWindow):
         self.alert_btn.clicked.connect(self.alert)
 
     def controlTimer(self):
-        """Load the Login Window and Extract the username, password and run validation"""
         if not self.timer.isActive():                                                                   # if timer is stopped
-            self.cap = cv2.VideoCapture(0, cv2.CAP_DSHOW)                                               # Create video capture
+            self.cap = cv2.VideoCapture(r"C:\Users\JiN\Desktop\IRIS\Videos\V_1.mp4")                                              # Create video capture
             self.timer.start(20)                                                                        # start timer
             self.live_feed_section.setVisible(True)
             self.start_monitor_btn.setText("Stop Monitoring")                                           # update Button Text
@@ -60,23 +79,54 @@ class Home_Window(QMainWindow):
     def viewCam(self):
         ret, image = self.cap.read()                                                                    # read image in BGR format
 
-        image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)                                                  # convert image to RGB format
-        flipped_image = cv2.flip(image, 1)                                                              # Flipping the Image
-        height, width, channel = flipped_image.shape                                                    # get image info
-        step = channel * width
+        if ret:
+            resized_frame = cv2.resize(image, (64, 64))
+            normalized_frame = resized_frame / 255
 
-        q_img = QImage(flipped_image.data, width, height, step, QImage.Format_RGB888)                   # create QImage from image
-        self.live_feed_section.setPixmap(QPixmap.fromImage(q_img))                                      # show image in img_label
+            predicted_labels_probabilities = self.model.predict(np.expand_dims(normalized_frame, axis=0))[0]
+            # decimal_pred = list(map(decimal_str, predicted_labels_probabilities))
+            # # print(decimal_pred)
 
-    def record_live_feed(self, frame):
-        if self.cap.isOpened() is False:
-            self.rec_btn.Toggle()
+            self.predicted_labels_probabilities_deque.append(predicted_labels_probabilities)
+
+            if len(self.predicted_labels_probabilities_deque) == self.window_size:
+                predicted_labels_probabilities_np = np.array(self.predicted_labels_probabilities_deque)
+                predicted_labels_probabilities_averaged = predicted_labels_probabilities_np.mean(axis=0)
+                predicted_label = np.argmax(predicted_labels_probabilities_averaged)
+                predicted_class_name = self.classes_list[predicted_label]
+
+                cv2.putText(image, predicted_class_name, (10, 30), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 2)
+                print(predicted_class_name)
+                if predicted_class_name == "Abnormal":
+                    self.alert()
+                    print(predicted_labels_probabilities_averaged[1])
+                    # self.timer.stop()
+
+
+            image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)                                                  # convert image to RGB format
+            # flipped_image = cv2.flip(image, 1)                                                              # Flipping the Image
+            height, width, channel = image.shape                                                    # get image info
+            step = channel * width
+
+            q_img = QImage(image.data, width, height, step, QImage.Format_RGB888)                   # create QImage from image
+            self.live_feed_section.setPixmap(QPixmap.fromImage(q_img))                                      # show image in img_label
+
+        else:
+            self.timer.stop()  # stop timer
+            cv2.destroyAllWindows()
+            self.cap.release()  # Release video capture
+            self.live_feed_section.setVisible(False)
+            self.start_monitor_btn.setText("Start Monitoring")  # Update Button Text
+
+
+    def record_live_feed(self):
+        if (self.cap is None) or (self.cap.isOpened() is False):
             Message(self, "Error", "Unable to read camera feed")                                        ###### NEED MORE WORK HERE
 
         else:
             frame_width = int(self.cap.get(3))
             frame_height = int(self.cap.get(4))
-            out = cv2.VideoWriter(r'Recordings\output.avi', cv2.VideoWriter_fourcc('M', 'J', 'P', 'G'), 10, (frame_width, frame_height))
+            out = cv2.VideoWriter(r'Recordings\output.avi', cv2.VideoWriter_fourcc('X', 'V', 'I', 'D'), 20, (frame_width, frame_height))
 
             while True:
                 ret, frame = self.cap.read()
@@ -97,23 +147,19 @@ class Home_Window(QMainWindow):
         self.window_stack.setCurrentIndex(0)
         self.window_stack.resize(640, 240)
 
+    @run_once
     def alert(self):
+        ret, screenshot = self.cap.read()
+        screenshot = cv2.flip(screenshot, 1)
+        cv2.imwrite("../Recordings/Image Evidence/screenshot.jpg", screenshot)
 
-        if self.cap is None or self.cap.isOpened() is False:
-            Message(self, "Error", "Unable to read camera feed")
-
-        else:
-            ret, screenshot = self.cap.read()
-            screenshot = cv2.flip(screenshot, 1)
-            cv2.imwrite("../Recordings/Image Evidence/screenshot.jpg", screenshot)
-
-            self.alert_window = Alert(self.username)
-            self.alert_window.show()
+        self.alert_window = Alert(self.username)
+        self.alert_window.show()
 
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
-
+    apply_stylesheet(app, theme='dark_amber.xml')
     home_window = Home_Window()
     home_window.show()
 

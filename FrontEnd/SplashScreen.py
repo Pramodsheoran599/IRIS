@@ -46,6 +46,7 @@ class Splash_Screen(QMainWindow):                                               
 
         self.show()
 
+
     def progress(self):
         global counter
 
